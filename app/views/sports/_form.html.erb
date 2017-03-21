@@ -14,7 +14,18 @@
   <% end %>
   <p>
     <%= f.label :项目 %><br>
-    <%= f.text_field :title %>
+    <%= radio_button_tag(:title, "羽毛球") %>
+    <%= label_tag(:title_ymq, "羽毛球") %>
+    <%= radio_button_tag(:title, "台球") %>
+    <%= label_tag(:title_tq, "台球") %>
+    <%= radio_button_tag(:title, "乒乓球") %>
+    <%= label_tag(:title_ppq, "乒乓球") %>
+    <%= radio_button_tag(:title, "足球") %>
+    <%= label_tag(:title_zq, "足球") %>
+    <%= radio_button_tag(:title, "篮球") %>
+    <%= label_tag(:title_lq, "篮球") %>
+    <%= radio_button_tag(:title, "趣味运动") %>
+    <%= label_tag(:title_qwyd, "趣味运动") %>
   </p>
   <p>
     <%= f.label :胜方 %><br>
