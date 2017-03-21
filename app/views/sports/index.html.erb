@@ -1,0 +1,25 @@
+<title>趣味运动会</title>
+<h1>趣味运动会</h1>
+
+<table>
+  <tr>
+    <th>项目</th>
+    <th>胜者</th>
+    <th>胜者分数</th>
+    <th>败者</th>
+    <th>败者分数</th>
+  </tr>
+
+  <% @sports.each do |sport| %>
+    <tr>
+      <td><%= sport.title %></td>
+      <td><%= sport.winner %></td>
+      <td><%= sport.wp %></td>
+      <td><%= sport.loser %></td>
+      <td><%= sport.lp %></td>
+      <td><%= link_to 'Info',sport_path(sport) %></td>
+      <td><%= link_to 'Edit',edit_sport_path(sport) %></td>
+    </tr>
+  <% end %>
+</table>
+<%= link_to 'new',new_sport_path %>

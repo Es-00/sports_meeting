@@ -1,0 +1,27 @@
+<%= form_for :sport, url: sports_path do |f| %>
+  <p>
+    <%= f.label :项目 %><br>
+    <%= f.text_field :title %>
+  </p>
+  <p>
+    <%= f.label :胜方 %><br>
+    <%= f.text_field :winner %>
+  </p>
+  <p>
+    <%= f.label :胜方分数 %><br>
+    <%= f.text_field :wp %>
+  </p>
+  <p>
+    <%= f.label :败方 %><br>
+    <%= f.text_field :loser %>
+  </p>
+  <p>
+    <%= f.label :负方分数 %><br>
+    <%= f.text_field :lp %>
+  </p>
+
+  <p>
+    <%= f.submit %>
+  </p>
+
+<% end %>
