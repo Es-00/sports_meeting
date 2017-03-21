@@ -1,4 +1,17 @@
-<%= form_for :sport, url: sports_path do |f| %>
+<%= form_for @sport do |f| %>
+<% if @sport.errors.any? %>
+    <div id="error_explanation">
+      <h2>
+        <%= pluralize(@sport.errors.count, "error") %> prohibited
+        this article from being saved:
+      </h2>
+      <ul>
+        <% @sport.errors.full_messages.each do |msg| %>
+          <li><%= msg %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
   <p>
     <%= f.label :项目 %><br>
     <%= f.text_field :title %>

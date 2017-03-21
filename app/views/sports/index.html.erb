@@ -19,6 +19,9 @@
       <td><%= sport.lp %></td>
       <td><%= link_to 'Info',sport_path(sport) %></td>
       <td><%= link_to 'Edit',edit_sport_path(sport) %></td>
+      <td><%= link_to 'Delete', sport_path(sport),
+              method: :delete,
+              data: { confirm: '真的要删掉嘛？' } %></td>
     </tr>
   <% end %>
 </table>
