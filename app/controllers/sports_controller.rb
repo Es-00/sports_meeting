@@ -9,7 +9,7 @@ class SportsController < ApplicationController
   end
 
   def create
-    @sport = Sport.new(params.require(:sport).permit(:title,:winner,:loser,:wp,:lp))
+    @sport = Sport.new(params.require(:sport).permit(:title,:winner,:loser,:wp,:lp,:week,:wday))
 
     @sport.save
 
@@ -44,8 +44,14 @@ class SportsController < ApplicationController
     end
   end
 
+  def search
+    @sports=Sport.where('winner=?',params[:key])
+    @sports+=Sport.where('loser=?',params[:key])
+  end
+
+
   private
   def sport_params
-    params.require(:sport).permit(:title,:winner,:loser,:wp,:lp)
+    params.require(:sport).permit(:title,:winner,:loser,:wp,:lp,:week,:wday)
   end
 end

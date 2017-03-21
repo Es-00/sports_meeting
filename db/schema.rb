@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170320134956) do
+ActiveRecord::Schema.define(version: 20170321133744) do
 
   create_table "sports", force: :cascade do |t|
     t.string   "title"
@@ -20,6 +20,8 @@ ActiveRecord::Schema.define(version: 20170320134956) do
     t.string   "lp"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.string   "week"
+    t.string   "wday"
   end
 
 end

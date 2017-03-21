@@ -1,11 +1,5 @@
-<title>趣味运动会</title>
-<h1>趣味运动会</h1>
-
-<%= form_tag(controller:"sports",action:"search", method: "post") do %>
-  <%= label_tag(:key, "搜索有此队伍参赛的比赛") %>
-  <%= text_field_tag(:key) %>
-  <%= submit_tag("查询") %>
-<% end %>
+<title>搜索结果</title>
+<h1>搜索结果</h1>
 
 <table>
   <tr>
@@ -34,4 +28,5 @@
     </tr>
   <% end %>
 </table>
-<%= link_to 'new',new_sport_path %>
+
+<%= link_to 'back',sports_path %>

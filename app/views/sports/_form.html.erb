@@ -14,18 +14,23 @@
   <% end %>
   <p>
     <%= f.label :项目 %><br>
-    <%= radio_button_tag(:title, "羽毛球") %>
-    <%= label_tag(:title_ymq, "羽毛球") %>
-    <%= radio_button_tag(:title, "台球") %>
-    <%= label_tag(:title_tq, "台球") %>
-    <%= radio_button_tag(:title, "乒乓球") %>
-    <%= label_tag(:title_ppq, "乒乓球") %>
-    <%= radio_button_tag(:title, "足球") %>
-    <%= label_tag(:title_zq, "足球") %>
-    <%= radio_button_tag(:title, "篮球") %>
-    <%= label_tag(:title_lq, "篮球") %>
-    <%= radio_button_tag(:title, "趣味运动") %>
-    <%= label_tag(:title_qwyd, "趣味运动") %>
+    <%= radio_button(:sport,:title, "羽毛球") %>
+    <%= label_tag( "羽毛球") %>
+    <%= radio_button(:sport,:title, "台球") %>
+    <%= label_tag( "台球") %>
+    <%= radio_button(:sport,:title, "乒乓球") %>
+    <%= label_tag( "乒乓球") %>
+    <%= radio_button(:sport,:title, "足球") %>
+    <%= label_tag( "足球") %>
+    <%= radio_button(:sport,:title, "篮球") %>
+    <%= label_tag( "篮球") %>
+    <%= radio_button(:sport,:title, "趣味运动") %>
+    <%= label_tag( "趣味运动") %>
+    <select name="" id="city_id">
+    <option value="1">Lisbon</option>
+    <option value="2">Madrid</option>
+    <option value="12">Berlin</option>
+    </select>
   </p>
   <p>
     <%= f.label :胜方 %><br>
@@ -42,6 +47,32 @@
   <p>
     <%= f.label :负方分数 %><br>
     <%= f.text_field :lp %>
+  </p>
+  <p>
+    <%= radio_button_tag(:week, "第一周") %>
+    <%= label_tag( "第一周") %>
+    <%= radio_button_tag(:week, "第二周") %>
+    <%= label_tag( "第二周") %>
+    <%= radio_button_tag(:week, "第三周") %>
+    <%= label_tag( "第三周") %>
+    <%= radio_button_tag(:week, "第四周") %>
+    <%= label_tag("第四周") %>
+  </p>
+  <p>
+    <%= radio_button_tag(:wday, "星期一") %>
+    <%= label_tag( "星期一") %>
+    <%= radio_button_tag(:wday, "星期二") %>
+    <%= label_tag( "星期二") %>
+    <%= radio_button_tag(:wday, "星期三") %>
+    <%= label_tag( "星期三") %>
+    <%= radio_button_tag(:wday, "星期四") %>
+    <%= label_tag( "星期四") %>
+    <%= radio_button_tag(:wday, "星期五") %>
+    <%= label_tag( "星期五") %>
+    <%= radio_button_tag(:wday, "星期六") %>
+    <%= label_tag( "星期六") %>
+    <%= radio_button_tag(:wday, "星期日") %>
+    <%= label_tag( "星期日") %>
   </p>
 
   <p>
