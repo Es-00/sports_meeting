@@ -45,8 +45,43 @@ class SportsController < ApplicationController
   end
 
   def search
-    @sports=Sport.where('winner=?',params[:key])
-    @sports+=Sport.where('loser=?',params[:key])
+    if !(params[:key].empty?) and !(params[:wday_].empty?) and !(params[:week_].empty?)
+          @sports=Sport.where(winner:params[:key],wday:params[:wday_],week:params[:week_])
+          @sports+=Sport.where(loser:params[:key],wday:params[:wday_],week:params[:week_])
+    end
+      #都不为空
+    if !(params[:key].empty?) and (params[:wday_].empty?) and (params[:week_].empty?)
+          @sports=Sport.where(winner:params[:key])
+          @sports+=Sport.where(loser:params[:key])
+    end
+    #week和wday为空
+    if !(params[:key].empty?) and !(params[:wday_].empty?) and (params[:week_].empty?)
+          @sports=Sport.where(winner:params[:key],wday:params[:wday_])
+          @sports+=Sport.where(loser:params[:key],wday:params[:wday_])
+    end
+    #week为空
+    if !(params[:key].empty?) and (params[:wday_].empty?) and !(params[:week_].empty?)
+          @sports=Sport.where(winner:params[:key],week:params[:week_])
+          @sports+=Sport.where(loser:params[:key],week:params[:week_])
+    end
+    #wday为空
+    if (params[:key].empty?) and !(params[:wday_].empty?) and (params[:week_].empty?)
+          @sports=Sport.where(wday:params[:wday_])
+    end
+    #key和week为空
+    if (params[:key].empty?) and (params[:wday_].empty?) and !(params[:week_].empty?)
+          @sports=Sport.where(week:params[:week_])
+    end
+    #key和wday为空
+    if (params[:key].empty?) and !(params[:wday_].empty?) and !(params[:week_].empty?)
+          @sports=Sport.where(wday:params[:wday_],week:params[:week_])
+    end
+    #key为空
+    if (params[:key].empty?) and (params[:wday_].empty?) and (params[:week_].empty?)
+          @sports=Sport.all
+    end
+    #全部为空
+    #test
   end
 
 
