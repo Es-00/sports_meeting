@@ -3,25 +3,26 @@
   <%= @sport.title %>
 </p>
 <p>
-  <strong>胜方:</strong>
-  <%= @sport.winner %>
+  <strong>队伍一:</strong>
+  <%= @sport.teamone %>
 </p>
 <p>
-  <strong>胜方分数:</strong>
+  <strong>队伍一分数:</strong>
   <%= @sport.wp %>
 </p>
 <p>
-  <strong>败方:</strong>
-  <%= @sport.loser %>
+  <strong>队伍二:</strong>
+  <%= @sport.teamtwo %>
 </p>
 
 <p>
-  <strong>败方分数:</strong>
+  <strong>队伍二分数:</strong>
   <%= @sport.lp %>
 </p>
 <p>
   <%= @sport.week %>
-</p>
-<p>
   <%= @sport.wday %>
+  <% if @sport.hour and @sport.minute and !@sport.hour.empty? and !@sport.minute.empty? %>
+  <%= @sport.hour %>:<%= @sport.minute %>
+  <% end %>
 </p>

@@ -1,32 +1,5 @@
 <title>搜索结果</title>
 <h1>搜索结果</h1>
 
-<table>
-  <tr>
-    <th>项目</th>
-    <th>胜者</th>
-    <th>胜者分数</th>
-    <th>败者</th>
-    <th>败者分数</th>
-    <th>比赛时期</th>
-  </tr>
-
-  <% @sports.each do |sport| %>
-    <tr>
-      <td><%= sport.title %></td>
-      <td><%= sport.winner %></td>
-      <td><%= sport.wp %></td>
-      <td><%= sport.loser %></td>
-      <td><%= sport.lp %></td>
-      <td><%= sport.week %></td>
-      <td><%= sport.wday %></td>
-      <td><%= link_to 'Info',sport_path(sport) %></td>
-      <td><%= link_to 'Edit',edit_sport_path(sport) %></td>
-      <td><%= link_to 'Delete', sport_path(sport),
-              method: :delete,
-              data: { confirm: '真的要删掉嘛？' } %></td>
-    </tr>
-  <% end %>
-</table>
-
+<%= render 'table' %>
 <%= link_to 'back',sports_path %>

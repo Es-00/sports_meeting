@@ -28,22 +28,43 @@
     <%= label_tag( "趣味运动") %>
   </p>
   <p>
-    <%= f.label :胜方 %><br>
-    <%= f.text_field :winner %>
+    <%= f.label :状态 %><br>
+    <%= radio_button(:sport,:status, "未开始") %>
+    <%= label_tag( "未开始") %>
+    <%= radio_button(:sport,:status, "进行中") %>
+    <%= label_tag( "进行中") %>
+    <%= radio_button(:sport,:status, "已结束") %>
+    <%= label_tag( "已结束") %>
+  <p>
+    <%= f.label :队伍一 %><br>
+    <%= f.text_field :teamone %>
+    <%= radio_button(:sport,:winner, "0") %>
+    <%= label_tag( "未开始") %>
+    <%= radio_button(:sport,:winner, @sport.teamone) %>
+    <%= label_tag( "赢") %>
+    <%= radio_button(:sport,:winner, @sport.teamtwo) %>
+    <%= label_tag( "输") %>
   </p>
   <p>
-    <%= f.label :胜方分数 %><br>
+    <%= f.label :队伍一分数 %><br>
     <%= f.text_field :wp %>
   </p>
   <p>
-    <%= f.label :败方 %><br>
-    <%= f.text_field :loser %>
+    <%= f.label :队伍二 %><br>
+    <%= f.text_field :teamtwo %>
+    <%= radio_button(:sport,:loser, "0") %>
+    <%= label_tag( "未开始") %>
+    <%= radio_button(:sport,:loser, @sport.teamone) %>
+    <%= label_tag( "赢") %>
+    <%= radio_button(:sport,:loser, @sport.teamtwo) %>
+    <%= label_tag( "输") %>
   </p>
   <p>
-    <%= f.label :负方分数 %><br>
+    <%= f.label :队伍二分数 %><br>
     <%= f.text_field :lp %>
   </p>
   <p>
+    <%= f.label :比赛时间 %>
     <%= radio_button(:sport, :week, "第一周") %>
     <%= label_tag( "第一周") %>
     <%= radio_button(:sport, :week, "第二周") %>
@@ -68,6 +89,10 @@
     <%= label_tag( "星期六") %>
     <%= radio_button(:sport, :wday, "星期日") %>
     <%= label_tag( "星期日") %>
+  </p>
+  <p>
+    <%= number_field(:sport,:hour, step: 1) %>:
+    <%= number_field(:sport,:minute, step: 5) %>
   </p>
 
   <p>

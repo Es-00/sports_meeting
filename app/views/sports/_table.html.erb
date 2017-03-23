@@ -1,0 +1,50 @@
+<table>
+  <tr>
+    <th>项目</th>
+    <th>状态</th>
+    <th>队伍一</th>
+    <th>分数</th>
+    <th>队伍二</th>
+    <th>分数</th>
+    <th>比赛周</th>
+    <th>比赛日期</th>
+    <th>比赛时间</th>
+  </tr>
+
+  <% @sports.each do |sport| %>
+    <tr>
+      <td><%= sport.title %></td>
+      <td><%= sport.status %></td>
+      <td>
+        <%= sport.teamone %>系
+        <% if sport.teamone == sport.winner then %>（胜）
+        <!--这个td内的都变红-->
+        <% elsif sport.teamone == sport.loser then %>（负）
+        <!-- 这个td内的都变蓝 -->
+        <% end %>
+      </td>
+      <td><%= sport.wp %>分</td>
+      <td>
+        <%= sport.teamtwo %>系
+        <% if sport.teamtwo == sport.winner then %>（胜）
+        <!--这个td内的都变红-->
+        <% elsif sport.teamtwo == sport.loser then %>（负）
+        <!-- 这个td内的都变蓝 -->
+        <% end %>
+      </td>
+      <td><%= sport.lp %>分</td>
+      <td><%= sport.week %></td>
+      <td><%= sport.wday %></td>
+      <% if sport.hour and sport.minute and !sport.hour.empty? and !sport.minute.empty? %>
+      <td><%= sport.hour %>:<%= sport.minute %></td>
+      <% elsif %>
+      <td>未知 </td>
+      <% end %>
+      <td><%= link_to 'Info',sport_path(sport) %></td>
+      <td><%= link_to 'Edit',edit_sport_path(sport) %></td>
+      <td><%= link_to 'Delete', sport_path(sport),
+              method: :delete,
+              data: { confirm: '真的要删掉嘛？' } %></td>
+    </tr>
+  <% end %>
+</table>

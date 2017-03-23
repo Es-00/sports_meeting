@@ -1,53 +1,7 @@
 <title>趣味运动会</title>
 <h1>趣味运动会</h1>
 
-<%= form_tag(controller:"sports",action:"search", method: "post") do %>
-  <%= label_tag(:key, "搜索有此队伍参赛的比赛") %>
-  <%= text_field_tag(:key) %>
-  <select name="week_" >
-  <option value="">    </option>
-  <option value="第一周">第一周</option>
-  <option value="第二周">第二周</option>
-  <option value="第三周">第三周</option>
-  <option value="第四周">第四周</option>
-  </select>
-  <select name="wday_" >
-  <option value="">    </option>
-  <option value="星期一">星期一</option>
-  <option value="星期二">星期二</option>
-  <option value="星期三">星期三</option>
-  <option value="星期四">星期四</option>
-  <option value="星期五">星期五</option>
-  <option value="星期六">星期六</option>
-  <option value="星期日">星期日</option>
-  <%= submit_tag("查询") %>
-<% end %>
+<%= render 'search' %>
 
-<table>
-  <tr>
-    <th>项目</th>
-    <th>胜者</th>
-    <th>胜者分数</th>
-    <th>败者</th>
-    <th>败者分数</th>
-    <th>比赛时期</th>
-  </tr>
-
-  <% @sports.each do |sport| %>
-    <tr>
-      <td><%= sport.title %></td>
-      <td><%= sport.winner %></td>
-      <td><%= sport.wp %></td>
-      <td><%= sport.loser %></td>
-      <td><%= sport.lp %></td>
-      <td><%= sport.week %></td>
-      <td><%= sport.wday %></td>
-      <td><%= link_to 'Info',sport_path(sport) %></td>
-      <td><%= link_to 'Edit',edit_sport_path(sport) %></td>
-      <td><%= link_to 'Delete', sport_path(sport),
-              method: :delete,
-              data: { confirm: '真的要删掉嘛？' } %></td>
-    </tr>
-  <% end %>
-</table>
+<%= render 'table' %>
 <%= link_to 'new',new_sport_path %>

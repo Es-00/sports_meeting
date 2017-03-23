@@ -6,10 +6,16 @@ class SportsController < ApplicationController
 
   def new
     @sport=Sport.new
+    @sport.status = "未开始"
+    @sport.winner = "0"
+    @sport.loser = "0"
+    @sport.week = "第一周"
+    @sport.wday = "星期一"
+    @sport.title = "羽毛球"
   end
 
   def create
-    @sport = Sport.new(params.require(:sport).permit(:title,:winner,:loser,:wp,:lp,:week,:wday))
+    @sport = Sport.new(params.require(:sport).permit(:title,:teamone,:winner,:loser,:teamtwo,:wp,:lp,:week,:wday,:status,:hour,:minute))
 
     @sport.save
 
@@ -46,23 +52,23 @@ class SportsController < ApplicationController
 
   def search
     if !(params[:key].empty?) and !(params[:wday_].empty?) and !(params[:week_].empty?)
-          @sports=Sport.where(winner:params[:key],wday:params[:wday_],week:params[:week_])
-          @sports+=Sport.where(loser:params[:key],wday:params[:wday_],week:params[:week_])
+          @sports=Sport.where(teamone:params[:key],wday:params[:wday_],week:params[:week_])
+          @sports+=Sport.where(teamtwo:params[:key],wday:params[:wday_],week:params[:week_])
     end
       #都不为空
     if !(params[:key].empty?) and (params[:wday_].empty?) and (params[:week_].empty?)
-          @sports=Sport.where(winner:params[:key])
-          @sports+=Sport.where(loser:params[:key])
+          @sports=Sport.where(teamone:params[:key])
+          @sports+=Sport.where(teamtwo:params[:key])
     end
     #week和wday为空
     if !(params[:key].empty?) and !(params[:wday_].empty?) and (params[:week_].empty?)
-          @sports=Sport.where(winner:params[:key],wday:params[:wday_])
-          @sports+=Sport.where(loser:params[:key],wday:params[:wday_])
+          @sports=Sport.where(teamone:params[:key],wday:params[:wday_])
+          @sports+=Sport.where(teamtwo:params[:key],wday:params[:wday_])
     end
     #week为空
     if !(params[:key].empty?) and (params[:wday_].empty?) and !(params[:week_].empty?)
-          @sports=Sport.where(winner:params[:key],week:params[:week_])
-          @sports+=Sport.where(loser:params[:key],week:params[:week_])
+          @sports=Sport.where(teamone:params[:key],week:params[:week_])
+          @sports+=Sport.where(teamtwo:params[:key],week:params[:week_])
     end
     #wday为空
     if (params[:key].empty?) and !(params[:wday_].empty?) and (params[:week_].empty?)
@@ -81,12 +87,13 @@ class SportsController < ApplicationController
           @sports=Sport.all
     end
     #全部为空
+    @sports.sort_by!{|e| e.week*7+e.wday}
     #test
   end
 
 
   private
   def sport_params
-    params.require(:sport).permit(:title,:winner,:loser,:wp,:lp,:week,:wday)
+    params.require(:sport).permit(:title,:winner,:loser,:teamone,:teamtwo,:wp,:lp,:week,:wday,:status,:hour,:minute)
   end
 end

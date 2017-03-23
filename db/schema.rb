@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170322142713) do
+ActiveRecord::Schema.define(version: 20170323054627) do
 
   create_table "predicts", force: :cascade do |t|
     t.string   "title"
@@ -35,6 +35,11 @@ ActiveRecord::Schema.define(version: 20170322142713) do
     t.string   "wday"
     t.string   "time"
     t.string   "now"
+    t.string   "teamone"
+    t.string   "teamtwo"
+    t.string   "status"
+    t.string   "hour"
+    t.string   "minute"
   end
 
 end

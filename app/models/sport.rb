@@ -1,6 +1,6 @@
-(class Sport < ApplicationRecord
-  validates :title,:winner,:loser,:wp,:lp,:week,:wday presence: true
-  validates :winner,:loser,:wp,:lp, numericality: { only_integer: true }
-  validates :winner,:loser, length:{maximum:2}
+class Sport < ApplicationRecord
+  validates :teamone,:teamtwo,:status, presence: true
+  validates :teamone,:teamtwo,:wp,:lp, numericality: { only_integer: true }
+  validates :teamone,:teamtwo, length:{maximum:2}
   validates :wp,:lp, length:{maximum:3}
 end
