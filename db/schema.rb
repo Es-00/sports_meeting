@@ -12,17 +12,6 @@
 
 ActiveRecord::Schema.define(version: 20170323054627) do
 
-  create_table "predicts", force: :cascade do |t|
-    t.string   "title"
-    t.string   "week"
-    t.string   "wday"
-    t.string   "team_one"
-    t.string   "team_two"
-    t.string   "time"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-  end
-
   create_table "sports", force: :cascade do |t|
     t.string   "title"
     t.string   "winner"
@@ -33,8 +22,6 @@ ActiveRecord::Schema.define(version: 20170323054627) do
     t.datetime "updated_at", null: false
     t.string   "week"
     t.string   "wday"
-    t.string   "time"
-    t.string   "now"
     t.string   "teamone"
     t.string   "teamtwo"
     t.string   "status"

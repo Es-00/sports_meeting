@@ -1,23 +1,31 @@
 <%= form_tag(controller:"sports",action:"search", method: "post") do %>
-<p>
-  <%= label_tag(:key, "搜索有此队伍参赛的比赛") %>
-  <%= text_field_tag(:key) %>
-  <select name="week_" >
-  <option value="">第X周</option>
-  <option value="第一周">第一周</option>
-  <option value="第二周">第二周</option>
-  <option value="第三周">第三周</option>
-  <option value="第四周">第四周</option>
-  </select>
-  <select name="wday_" >
-  <option value="">星期X</option>
-  <option value="星期一">星期一</option>
-  <option value="星期二">星期二</option>
-  <option value="星期三">星期三</option>
-  <option value="星期四">星期四</option>
-  <option value="星期五">星期五</option>
-  <option value="星期六">星期六</option>
-  <option value="星期日">星期日</option>
-  <%= submit_tag("查询") %>
-</p>
+  <div class="ui search">
+    <div class="ui input">
+    <input type="text" name="key" placeholder="搜索队伍编号">
+    <!--以下是两种实现方法 -->
+    <div class="ui compact selection dropdown">
+      <input type="hidden" id="week_info" name="week_" value="">
+      <div class="default text">第X周</div>
+      <i class="dropdown icon"></i>
+      <div class="menu ui transition hidden">
+        <div class="item" data-value="第一周">第一周</div>
+        <div class="item" data-value="第二周">第二周</div>
+        <div class="item" data-value="第三周">第三周</div>
+        <div class="item" data-value="第四周">第四周</div>
+      </div>
+    </div>
+    <select name="wday_" class="ui compact selection dropdown">
+      <option value="">星期X</option>
+      <option value="星期一">星期一</option>
+      <option value="星期二">星期二</option>
+      <option value="星期三">星期三</option>
+      <option value="星期四">星期四</option>
+      <option value="星期五">星期五</option>
+      <option value="星期六">星期六</option>
+      <option value="星期日">星期日</option>
+    </select>
+      <button type="submit" class="ui button">搜索</button>
+    </div>
+  </div>
+
 <% end %>

@@ -1,3 +1,13 @@
+<div class="ui grid">
+  <div class="ui two wide column"></div>
+  <div class="ui twelve wide column">
+    <div class="ui raised segemnts">
+      <%= render partial:'sports/cards',locals:{sports: @sports}%>
+      </div>
+    </div>
+  <div class="ui two wide column"></div>
+</div>
+
 <table>
   <tr>
     <th>项目</th>
@@ -7,7 +17,7 @@
     <th>队伍二</th>
     <th>分数</th>
     <th>比赛周</th>
-    <th>比赛日期</th>
+    <th>比赛日</th>
     <th>比赛时间</th>
   </tr>
 
