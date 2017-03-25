@@ -1,5 +1,23 @@
 <% @sports=Sport.where(title:params['羽毛球']) %>
 <% title='羽毛球' %>
+<div class="ui top fixed inverted menu">
+  <div class="item">
+    <i class="list layout icon"></i>
+  </div>
+  <div class="right menu">
+  <% if current_user %>
+    <a class="item">你好！</a>
+  <% end %>
+    <div class="ui dropdown item">
+          管理员操作
+        <i class="dropdown icon"></i>
+        <div class="menu">
+          <a class="item" href="/signup">SignUp</a>
+          <a class="item" href="/login">Login</a>
+        </div>
+    </div>
+  </div>
+</div>
 <div class="ui yellow inverted center aligned segment">
 <h1>北航第七届体育文化节</h1>
 <img class="ui small centered circular image" src="http://ofnfnmmn0.bkt.clouddn.com/buaa.jpg"></img>
