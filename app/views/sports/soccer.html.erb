@@ -1,0 +1,13 @@
+<% @sports=Sport.where(title:params['足球']) %>
+<% title='足球' %>
+<div class="ui yellow inverted center aligned segment">
+<h1>北航第七届体育文化节</h1>
+<img class="ui small centered circular image" src="http://ofnfnmmn0.bkt.clouddn.com/buaa.jpg"></img>
+<img class="ui medium centered image" src="/tylogo-n2.png">
+<br/>
+<%= render 'search' %>
+<br/>
+<h4 class="ui horizontal divider header"><i class="bar chart icon"></i>足球</h4>
+<%= render'oneSport' %>
+</div>
+<%= link_to 'Back',sports_path,:class=>"ui blue button" %>

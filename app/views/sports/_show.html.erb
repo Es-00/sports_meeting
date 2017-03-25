@@ -5,6 +5,9 @@
 <p>
   <strong>队伍一:</strong>
   <%= @sport.teamone %>
+  <% if @sport.teamone == @sport.winner then %>（胜）
+  <% elsif @sport.teamone == @sport.loser then %>（负）
+  <% end %>
 </p>
 <p>
   <strong>队伍一分数:</strong>
@@ -13,13 +16,19 @@
 <p>
   <strong>队伍二:</strong>
   <%= @sport.teamtwo %>
+  <% if @sport.teamtwo == @sport.winner then %>（胜）
+  <% elsif @sport.teamtwo == @sport.loser then %>（负）
+  <% end %>
 </p>
-
 <p>
   <strong>队伍二分数:</strong>
   <%= @sport.lp %>
 </p>
 <p>
+  <strong>比赛地点</strong>
+  <%= @sport.place %>
+<p>
+  <strong>比赛时间</strong>
   <%= @sport.week %>
   <%= @sport.wday %>
   <% if @sport.hour and @sport.minute and !@sport.hour.empty? and !@sport.minute.empty? %>

@@ -16,6 +16,7 @@
     <th>分数</th>
     <th>队伍二</th>
     <th>分数</th>
+    <th>比赛地点</th>
     <th>比赛周</th>
     <th>比赛日</th>
     <th>比赛时间</th>
@@ -43,13 +44,10 @@
         <% end %>
       </td>
       <td><%= sport.lp %>分</td>
+      <td><%= sport.place %></td>
       <td><%= sport.week %></td>
       <td><%= sport.wday %></td>
-      <% if sport.hour and sport.minute and !sport.hour.empty? and !sport.minute.empty? %>
       <td><%= sport.hour %>:<%= sport.minute %></td>
-      <% elsif %>
-      <td>未知 </td>
-      <% end %>
       <td><%= link_to 'Info',sport_path(sport) %></td>
       <td><%= link_to 'Edit',edit_sport_path(sport) %></td>
       <td><%= link_to 'Delete', sport_path(sport),

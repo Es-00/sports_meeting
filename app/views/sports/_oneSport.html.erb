@@ -1,6 +1,6 @@
 <% dic={"台球"=>"black","羽毛球"=>"blue","篮球"=>"red","趣味运动"=>"purple","足球"=>"green","乒乓球"=>"yellow"} %>
 <% dic2={"未开始"=>"red","已结束"=>"green"} %>
-<% sports.each do |sport| %>
+<% @sports.each do |sport| %>
 <div class="<%= 'ui '+dic[sport.title]+' segment'%>">
   <a class="<%= 'ui ribbon '+dic[sport.title]+' label' %>"><%= sport.title %></a>
   <span style="<%='color:'+dic2[sport.status]%>">项目<%= sport.status%></span>
