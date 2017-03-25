@@ -20,13 +20,13 @@ ActiveRecord::Schema.define(version: 20170324155705) do
     t.string   "lp"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.string   "week"
+    t.string   "wday"
     t.string   "teamone"
     t.string   "teamtwo"
     t.string   "status"
     t.string   "hour"
     t.string   "minute"
-    t.string   "week"
-    t.string   "wday"
     t.string   "place"
   end
 

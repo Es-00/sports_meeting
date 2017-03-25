@@ -6,6 +6,7 @@ Rails.application.routes.draw do
   end
   root 'sports#index'
 
+  
   get "signup" => "users#signup", :as => "signup"
   get "login" => "users#login", :as => "login"
   resources :users, only: [:create]
