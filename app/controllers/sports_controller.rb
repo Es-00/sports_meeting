@@ -50,8 +50,13 @@ class SportsController < ApplicationController
     end
   end
 
+  def linkTo
+    @sport=Sport.all
+    @title=title
+  end
+
   def search
-    if title.nil?
+
       if !(params[:key].empty?) and !(params[:wday_].empty?) and !(params[:week_].empty?)
             @sports=Sport.where(teamone:params[:key],wday:params[:wday_],week:params[:week_])
             @sports+=Sport.where(teamtwo:params[:key],wday:params[:wday_],week:params[:week_])
@@ -85,49 +90,14 @@ class SportsController < ApplicationController
       end
       #key为空
       if (params[:key].empty?) and (params[:wday_].empty?) and (params[:week_].empty?)
-            @sports=Sport.all
-      end
-      #全部为空
-    elsif
-      if !(params[:key].empty?) and !(params[:wday_].empty?) and !(params[:week_].empty?)
-            @sports=Sport.where(teamone:params[:key],wday:params[:wday_],week:params[:week_],title:params[:title])
-            @sports+=Sport.where(teamtwo:params[:key],wday:params[:wday_],week:params[:week_],title:params[:title])
-      end
-        #都不为空
-      if !(params[:key].empty?) and (params[:wday_].empty?) and (params[:week_].empty?)
-            @sports=Sport.where(teamone:params[:key],title:params[:title])
-            @sports+=Sport.where(teamtwo:params[:key],title:params[:title])
-      end
-      #week和wday为空
-      if !(params[:key].empty?) and !(params[:wday_].empty?) and (params[:week_].empty?)
-            @sports=Sport.where(teamone:params[:key],wday:params[:wday_],title:params[:title])
-            @sports+=Sport.where(teamtwo:params[:key],wday:params[:wday_],title:params[:title])
-      end
-      #week为空
-      if !(params[:key].empty?) and (params[:wday_].empty?) and !(params[:week_].empty?)
-            @sports=Sport.where(teamone:params[:key],week:params[:week_],title:params[:title])
-            @sports+=Sport.where(teamtwo:params[:key],week:params[:week_],title:params[:title])
-      end
-      #wday为空
-      if (params[:key].empty?) and !(params[:wday_].empty?) and (params[:week_].empty?)
-            @sports=Sport.where(wday:params[:wday_],title:params[:title])
-      end
-      #key和week为空
-      if (params[:key].empty?) and (params[:wday_].empty?) and !(params[:week_].empty?)
-            @sports=Sport.where(week:params[:week_],title:params[:title])
-      end
-      #key和wday为空
-      if (params[:key].empty?) and !(params[:wday_].empty?) and !(params[:week_].empty?)
-            @sports=Sport.where(wday:params[:wday_],week:params[:week_],title:params[:title])
-      end
-      #key为空
-      if (params[:key].empty?) and (params[:wday_].empty?) and (params[:week_].empty?)
             @sports=Sport.where(title:params[:title])
       #全部为空
       end
-    end
     @sports.sort_by!{|e| e.week*7+e.wday}
     #test
+  end
+
+  def unique
   end
 
 

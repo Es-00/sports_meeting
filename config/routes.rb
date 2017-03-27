@@ -2,11 +2,11 @@ Rails.application.routes.draw do
   get 'users/signup'
 
   resources :sports do
-    collection{post :search}
+    collection{post :search,:unique}
   end
   root 'sports#index'
 
-  
+
   get "signup" => "users#signup", :as => "signup"
   get "login" => "users#login", :as => "login"
   resources :users, only: [:create]
