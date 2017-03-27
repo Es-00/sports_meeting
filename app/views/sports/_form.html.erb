@@ -24,8 +24,12 @@
     <%= label_tag( "足球") %>
     <%= radio_button(:sport,:title, "篮球") %>
     <%= label_tag( "篮球") %>
-    <%= radio_button(:sport,:title, "趣味运动") %>
-    <%= label_tag( "趣味运动") %>
+    <select name="f.title" class="ui compact selection dropdown">
+      <option >趣味项目</option>
+      <option value="趣味项目:暴走大礼包">暴走大礼包</option>
+      <option value="趣味项目:三维台球">三维弹球</option>
+      <option value="趣味项目:舞动青春">舞动青春</option>
+    </select>
   </p>
   <p>
     <%= f.label :状态 %><br>

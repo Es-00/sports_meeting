@@ -25,11 +25,17 @@
 <br/>
 <%= render 'search' %>
 <br/>
+
+
+
 <h4 class="ui horizontal divider header"><i class="bar chart icon"></i>项目概览</h4>
 <div class="ui six column stackable grid">
   <div class="column">
     <h2 class="ui icon header">
       <i class="soccer link icon" id="soccer" ></i>
+      <form id="zuqiu" action="/sports/search" method="post">
+        <input type="hidden" name="title" value="足球">
+      </form>
     <div class="content">足球<div class="sub header">反正足球挺好玩的～</div>
   </div>
     </h2>
@@ -37,30 +43,45 @@
   <div class="column">
     <h2 class="ui icon header">
       <i class="users link icon" id="basketball" ></i>
+      <form id="lanqiu" action="/sports/search" method="post">
+        <input type="hidden" name="title" value="篮球">
+      </form>
     <div class="content">篮球<div class="sub header">一掷千进，只入你心</div>
   </div>
     </h2></div>
   <div class="column">
     <h2 class="ui icon header">
     <i class="neuter link icon" id="badminton"></i>
+    <form id="yumaoqiu" action="/sports/search" method="post">
+      <input type="hidden" name="title" value="羽毛球">
+    </form>
     <div class="content">羽毛球<div class="sub header">无羽伦比，谁羽争锋</div></div>
     </h2>
   </div>
   <div class="column">
     <h2 class="ui icon header">
     <i class="forumbee link icon" id="pingpong"></i>
+    <form id="pingpang" action="/sports/search" method="post">
+      <input type="hidden" name="title" value="乒乓球">
+    </form>
     <div class="content">乒乓球<div class="sub header">乒你个春夏秋冬，乓我个无怨无悔</div></div>
     </h2>
   </div>
   <div class="column">
     <h2 class="ui icon header">
     <i class="circle link icon" id="billiard"></i>
+    <form id="taiqiu" action="/sports/search" method="post">
+      <input type="hidden" name="title" value="台球">
+    </form>
     <div class="content">台球<div class="sub header">旋转，碰撞，摩擦，不只是动量守恒</div></div>
     </h2>
   </div>
   <div class="column">
     <h2 class="ui icon header">
     <i class="game link icon" id="interest"></i>
+    <form id="quwei" action="/sports/search" method="post">
+      <input type="hidden" name="title" value="趣味项目">
+    </form>
     <div class="content">趣味项目<div class="sub header">我的意中人，会骑着七彩毛毛虫来接我</div></div>
     </h2>
   </div>

@@ -5,15 +5,15 @@
  $(document).on "turbolinks:load", ->
    $('.ui.dropdown')
      .dropdown()
-  # $('#soccer').on "click", ->
-  #   location.href="/new"
-  # $('#basketball').on "click", ->
-  #   location.href="/basketball"
-  # $('#badminton').on "click", ->
-  #   location.href="/badminton"
-  # $('#pingpong').on "click", ->
-  #   location.href="/pingpong"
-  # $('#billiard').on "click", ->
-  #   location.href="/billiard"
-  # $('#interest').on "click", ->
-  #   location.href="/interest"
+   $('#soccer').on "click", ->
+     $('#zuqiu').submit();
+   $('#basketball').on "click", ->
+     $('#lanqiu').submit();
+   $('#badminton').on "click", ->
+     $('#yumaoqiu').submit();
+   $('#pingpong').on "click", ->
+     $('#pingpang').submit();
+   $('#billiard').on "click", ->
+     $('#taiqiu').submit();
+   $('#interest').on "click", ->
+     $('#quwei').submit();

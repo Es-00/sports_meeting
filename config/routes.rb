@@ -2,7 +2,7 @@ Rails.application.routes.draw do
   get 'users/signup'
 
   resources :sports do
-    collection{post :search,:unique}
+    collection{post :search}
   end
   root 'sports#index'
 
