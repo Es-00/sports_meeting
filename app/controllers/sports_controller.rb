@@ -11,7 +11,6 @@ class SportsController < ApplicationController
     @sport.loser = "0"
     @sport.week = "第一周"
     @sport.wday = "星期日"
-    @sport.title = "羽毛球"
   end
 
   def create

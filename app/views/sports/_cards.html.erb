@@ -1,10 +1,10 @@
 <% dic={"台球"=>"black","羽毛球"=>"blue","篮球"=>"red","趣味运动"=>"purple","足球"=>"green","乒乓球"=>"yellow"} %>
 <% dic2={"未开始"=>"red","已结束"=>"green"} %>
-<% sports.each do |sport| %>
+<% @sports.each do |sport| %>
+<% if !(sport.title.include? "趣味项目") %>
 <div class="<%= 'ui '+dic[sport.title]+' segment'%>">
   <a class="<%= 'ui ribbon '+dic[sport.title]+' label' %>"><%= sport.title %></a>
   <span style="<%='color:'+dic2[sport.status]%>">项目<%= sport.status%></span>
-  <% if sport.title != "趣味项目" %>
     <div class="ui grid">
       <div class="ui four wide column">
         <div class="ui center aligned container">
@@ -23,10 +23,6 @@
         </div>
       </div>
     </div>
-  <% else %>
-    <!-- quweixiangmu -->
-
-  <% end %>
   <div class="ui grid">
     <div class="ui two wide column"></div>
     <div class="ui three wide column">
@@ -59,4 +55,5 @@
     <!-- <a class="ui blue button" href="">编辑</a>
     <a class="ui red button" href="">删除</a> -->
   </div>
+  <% end %>
   <% end %>

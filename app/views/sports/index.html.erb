@@ -82,10 +82,10 @@
     <form id="quwei" action="/sports/search" method="post">
       <input type="hidden" name="title" value="趣味项目">
     </form>
-    <div class="content">趣味项目<div class="sub header">我的意中人，会骑着七彩毛毛虫来接我</div></div>
+    <div class="content" id="test">趣味项目<div class="sub header">我的意中人，会骑着七彩毛毛虫来接我</div></div>
     </h2>
   </div>
 </div>
 <%= link_to 'new',new_sport_path %>
 </div>
-<%= render 'table' %>
+<%= render "cards" %>
