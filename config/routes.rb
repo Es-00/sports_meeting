@@ -2,7 +2,7 @@ Rails.application.routes.draw do
   get 'users/signup'
 
   resources :sports do
-    collection{post :search}
+    collection{post :search,:interesting}
   end
   root 'sports#index'
 

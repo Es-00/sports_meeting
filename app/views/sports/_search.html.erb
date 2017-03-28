@@ -1,7 +1,7 @@
-<%= form_tag(controller:"sports",action:"search") do %>
+<%= form_tag({controller:"sports",action:"search"},id:"search_form") do %>
   <div class="ui search">
     <div class="ui input">
-    <input type="text" name="key" placeholder="搜索队伍编号">
+    <input type="text" name="key" placeholder="搜索队伍编号" value="">
     <!--以下是两种实现方法 -->
     <select name="title" class="ui compact selection dropdown">
       <option value="">项目</option>
@@ -10,7 +10,6 @@
       <option value="羽毛球">羽毛球</option>
       <option value="乒乓球">乒乓球</option>
       <option value="台球">台球</option>
-      <option value="趣味项目">趣味项目</option>
     </select>
     <div class="ui compact selection dropdown">
       <input type="hidden" id="week_info" name="week_" value="">

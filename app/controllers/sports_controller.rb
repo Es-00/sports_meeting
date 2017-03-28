@@ -18,10 +18,14 @@ class SportsController < ApplicationController
   end
 
   def interest
+  end
+
+  def interesting
     if params[:category]
-      @sports=Sport.where("title=?","趣味项目:"+params[:category])
+      @sports=[]
+      @sports+=Sport.where("title=?","趣味项目:"+params[:category])
       @sports.sort_by! {|x| x.wp}
-      respond do |f|
+      respond_to do |f|
         f.js
       end
     end
@@ -65,17 +69,21 @@ class SportsController < ApplicationController
 
 
   def search
+    dic={"第一周"=>1,"第二周"=>2,"第三周"=>3,"第四周"=>4}
+    dic2={"星期一"=>1,"星期二"=>2,"星期三"=>3,"星期四"=>4,"星期五"=>5,"星期六"=>6,"星期日"=>7}
     @sports=[]
     if params[:key]
-      (Sport.all).each do |sport|
-        if sport.teamone==params[:key] or sport.teamtwo==params[:key] or params[:key].empty?
+      Sport.all.each do |sport|
+        if sport.teamone.include? params[:key] or sport.teamtwo.include? params[:key]
           if sport.wday.include? params[:wday_] and sport.week.include? params[:week_] and sport.title.include? params[:title]
-            @sports << sport
+            unless sport.title.include? "趣味" or sport.status=="未开始"
+              @sports << sport
+            end
           end
         end
       end
     end
-    #@sports.sort_by!{|e| e.week}
+    @sports.sort_by!{|e| dic[e.week]*7+dic2[e.wday]}
   end
 
 

@@ -10,31 +10,27 @@
         <div class="center aligned baozou column">
           <h3 class="ui icon header"><i class="gift link icon"></i>
             <div class="content">暴走大礼包</div>
-            <form id="baozou" action="/interest" method="post" data-remote="true">
-              <input type="hidden" name="category" value="暴走大礼包">
-            <form>
           </h3>
         </div>
         <div class="center aligned sanwei column">
           <h3 class="ui icon header"><i class="cubes link icon"></i>
             <div class="content">三维弹球</div>
-            <form id="sanwei" action="/interest" method="post" data-remote="true">
-              <input type="hidden" name="category" value="三维弹球">
-            <form>
           </h3>
         </div>
         <div class="center aligned qingchun column">
           <h3 class="ui icon header"><i class="child link icon"></i>
             <div class="content">舞动青春</div>
-            <form id="qingchun" action="/interest" method="post" data-remote="true">
-              <input type="hidden" name="category" value="舞动青春">
-            <form>
           </h3>
         </div>
       </div>
+      <form id="interest_form" action="/sports/interesting" method="post" data-remote="true">
+        <input type="hidden" name="category" value="">
+      <form>
+    <div class="interest_results"></div>
+    </div>
+    <div class="ui center aligned container">
+      <%= link_to 'Back',sports_path,:class=>"ui blue button" %>
     </div>
   </div>
   <div class="two wide column"></div>
 </div>
-<div class="interest_results"></div>
-<%= link_to 'Back',sports_path,:class=>"ui blue button" %>
