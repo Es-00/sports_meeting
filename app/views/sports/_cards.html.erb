@@ -1,27 +1,27 @@
 <% dic={"台球"=>"black","羽毛球"=>"blue","篮球"=>"red","趣味运动"=>"purple","足球"=>"green","乒乓球"=>"yellow"} %>
 <% dic2={"未开始"=>"red","已结束"=>"green"} %>
-<% sports.each do |sport| %>
+<% @sports.each do |sport| %>
 <div class="<%= 'ui '+dic[sport.title]+' segment'%>">
   <a class="<%= 'ui ribbon '+dic[sport.title]+' label' %>"><%= sport.title %></a>
   <span style="<%='color:'+dic2[sport.status]%>">项目<%= sport.status%></span>
-  <div class="ui grid">
-    <div class="ui four wide column">
-      <div class="ui center aligned container">
-        <h2><%= sport.teamone %>系</h2>
+    <div class="ui grid">
+      <div class="ui four wide column">
+        <div class="ui center aligned container">
+          <h2><%= sport.teamone %>系</h2>
+        </div>
+      </div>
+      <div class="ui eight wide column">
+        <div class="ui center aligned container">
+          <!--比分示例 <h2>14 : 20</h2> -->
+          <h2>VS</h2>
+        </div>
+      </div>
+      <div class="ui four wide column">
+        <div class="ui center aligned container">
+          <h2><%= sport.teamtwo %>系</h2>
+        </div>
       </div>
     </div>
-    <div class="ui eight wide column">
-      <div class="ui center aligned container">
-        <!--比分示例 <h2>14 : 20</h2> -->
-        <h2>VS</h2>
-      </div>
-    </div>
-    <div class="ui four wide column">
-      <div class="ui center aligned container">
-        <h2><%= sport.teamtwo %>系</h2>
-      </div>
-    </div>
-  </div>
   <div class="ui grid">
     <div class="ui two wide column"></div>
     <div class="ui three wide column">

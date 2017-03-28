@@ -12,21 +12,57 @@
       </ul>
     </div>
   <% end %>
-  <p>
+
+  <div class="ui pointing dropdown link item">
+    <input type="hidden"  name="sport[title]" value="">
+    <span class="text">体育项目</span>
+    <i class="dropdown icon"></i>
+    <div class="menu">
+      <div class="item" data-value="足球">足球</div>
+      <div class="item" data-value="篮球">篮球</div>
+      <div class="item" data-value="羽毛球">羽毛球</div>
+      <div class="item" data-value="乒乓">乒乓</div>
+      <div class="item" data-value="台球">台球</div>
+      <div class="ui dropdown item">
+        <i class="dropdown icon"></i>
+        <span class="text">趣味项目</span>
+        <div class="menu">
+          <div class="item" data-value="趣味项目:暴走大礼包">暴走大礼包</div>
+          <div class="item" data-value="趣味项目:三维台球">三维台球</div>
+          <div class="item" data-value="趣味项目:舞动青春">舞动青春</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+    <!-- <input type="hidden" name="sport[title]" value="">
+    <div class="ui menu">
+        <a class="item" data-value="足球">足球</a>
+        <a class="item" data-value="篮球">篮球</a>
+        <a class="item" data-value="羽毛球">羽毛球</a>
+        <a class="item" data-value=“乒乓”>乒乓</a>
+        <a class="item">台球</a>
+    </div> -->
+
+  <!-- <p>
     <%= f.label :项目 %><br>
-    <%= radio_button(:sport,:title, "羽毛球") %>
+    <%= f.radio_button(:title,"羽毛球",:class=>"radios") %>
     <%= label_tag( "羽毛球") %>
-    <%= radio_button(:sport,:title, "台球") %>
+    <%= f.radio_button(:title, "台球",:class=>"radios") %>
     <%= label_tag( "台球") %>
-    <%= radio_button(:sport,:title, "乒乓球") %>
+    <%= f.radio_button(:title, "乒乓球",:class=>"radios") %>
     <%= label_tag( "乒乓球") %>
-    <%= radio_button(:sport,:title, "足球") %>
+    <%= f.radio_button(:title, "足球",:class=>"radios") %>
     <%= label_tag( "足球") %>
-    <%= radio_button(:sport,:title, "篮球") %>
+    <%= f.radio_button(:title, "篮球",:class=>"radios") %>
     <%= label_tag( "篮球") %>
-    <%= radio_button(:sport,:title, "趣味运动") %>
-    <%= label_tag( "趣味运动") %>
-  </p>
+    <select id="sport_title" name="sport[title]" class="ui compact selection dropdown">
+      <option >趣味项目</option>
+      <option value="趣味项目:暴走大礼包">暴走大礼包</option>
+      <option value="趣味项目:三维台球">三维弹球</option>
+      <option value="趣味项目:舞动青春">舞动青春</option>
+    </select>
+  </p> -->
   <p>
     <%= f.label :状态 %><br>
     <%= radio_button(:sport,:status, "未开始") %>
