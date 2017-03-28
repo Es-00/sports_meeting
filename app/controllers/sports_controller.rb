@@ -14,9 +14,22 @@ class SportsController < ApplicationController
     @sport.title = "羽毛球"
   end
 
+  def forenotice
+    @sports=Sport.where("status=?", "未开始")
+  end
+
+  def interest
+    if params[:category]
+      @sports=Sport.where("title=?","趣味项目:"+params[:category])
+      @sports.sort_by! {|x| x.wp}
+      respond do |f|
+        f.js
+      end
+    end
+  end
+
   def create
     @sport = Sport.new(params.require(:sport).permit(:title,:teamone,:winner,:loser,:teamtwo,:wp,:lp,:week,:wday,:status,:hour,:minute,:place))
-
     @sport.save
 
     if @sport.save
@@ -51,7 +64,7 @@ class SportsController < ApplicationController
   end
 
   def search
-    if title.nil?
+    if params[:title].nil?
       if !(params[:key].empty?) and !(params[:wday_].empty?) and !(params[:week_].empty?)
             @sports=Sport.where(teamone:params[:key],wday:params[:wday_],week:params[:week_])
             @sports+=Sport.where(teamtwo:params[:key],wday:params[:wday_],week:params[:week_])

@@ -1,0 +1,16 @@
+<% sports.each do |sport| %>
+<% if sport.title.include? "趣味"%>
+<div class="ui black segment">
+  <table class="ui celled table">
+    <thead>
+      <tr><th>队伍</th>
+        <th>得分</th></tr>
+    </thead>
+    <tbody>
+      <td><%= sport.title %></td>
+      <td><%= sport.wp %></td>
+    </tbody>
+  </table>
+</div>
+<% end %>
+<% end %>

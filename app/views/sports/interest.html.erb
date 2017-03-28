@@ -1,31 +1,40 @@
-<% @sports=Sport.where(title:params['badminton']) %>
-<% title='羽毛球' %>
-<div class="ui top fixed inverted menu">
-  <div class="item">
-    <i class="list layout icon"></i>
-  </div>
-  <div class="right menu">
-  <% if current_user %>
-    <a class="item">你好！</a>
-  <% end %>
-    <div class="ui dropdown item">
-          管理员操作
-        <i class="dropdown icon"></i>
-        <div class="menu">
-          <a class="item" href="/signup">SignUp</a>
-          <a class="item" href="/login">Login</a>
+<br/>
+
+<div class="ui grid">
+  <div class="two wide column"></div>
+  <div class="twelve wide column">
+    <div class="ui black segment">
+      <a class="ui ribbon black label">趣味项目</a>
+      <h2 class="ui header">项目类别</h2>
+      <div class="ui three column celled grid">
+        <div class="center aligned baozou column">
+          <h3 class="ui icon header"><i class="gift link icon"></i>
+            <div class="content">暴走大礼包</div>
+            <form id="baozou" action="/interest" method="post" data-remote="true">
+              <input type="hidden" name="category" value="暴走大礼包">
+            <form>
+          </h3>
         </div>
+        <div class="center aligned sanwei column">
+          <h3 class="ui icon header"><i class="cubes link icon"></i>
+            <div class="content">三维弹球</div>
+            <form id="sanwei" action="/interest" method="post" data-remote="true">
+              <input type="hidden" name="category" value="三维弹球">
+            <form>
+          </h3>
+        </div>
+        <div class="center aligned qingchun column">
+          <h3 class="ui icon header"><i class="child link icon"></i>
+            <div class="content">舞动青春</div>
+            <form id="qingchun" action="/interest" method="post" data-remote="true">
+              <input type="hidden" name="category" value="舞动青春">
+            <form>
+          </h3>
+        </div>
+      </div>
     </div>
   </div>
+  <div class="two wide column"></div>
 </div>
-<div class="ui yellow inverted center aligned segment">
-<h1>北航第七届体育文化节</h1>
-<img class="ui small centered circular image" src="http://ofnfnmmn0.bkt.clouddn.com/buaa.jpg"></img>
-<img class="ui medium centered image" src="/tylogo-n2.png">
-<br/>
-<%= render 'search' %>
-<br/>
-<h4 class="ui horizontal divider header"><i class="bar chart icon"></i>羽毛球</h4>
-<%= render'oneSport' %>
-</div>
+<div class="interest_results"></div>
 <%= link_to 'Back',sports_path,:class=>"ui blue button" %>

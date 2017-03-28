@@ -17,3 +17,9 @@ $(document).on "turbolinks:load", ->
     location.href="/billiard"
   $('#interest').on "click", ->
     location.href="/interest"
+  $('.baozou').on "click", ->
+    $('#baozou').submit()
+  $('.sanwei').on "click", ->
+    $('#sanwei').submit()
+  $('.qingchun').on "click", ->
+    $('#qingchun').submit()
