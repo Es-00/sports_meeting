@@ -40,7 +40,11 @@
     </div>
     <div class="ui two wide column">
       <div class="ui container">
-        <h3 class="ui header"><%= sport.hour %>:<%= sport.minute %></h3>
+        <% if sport.minute=="0"%>
+          <h3 class="ui header"><%= sport.hour %>:<%= sport.minute %>0</h3>
+        <% else %>
+          <h3 class="ui header"><%= sport.hour %>:<%= sport.minute %></h3>
+        <% end %>
       </div>
     </div>
     <div class="ui one wide column">

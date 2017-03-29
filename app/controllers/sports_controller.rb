@@ -5,12 +5,16 @@ class SportsController < ApplicationController
   end
 
   def new
-    @sport=Sport.new
-    @sport.status = "未开始"
-    @sport.winner = "0"
-    @sport.loser = "0"
-    @sport.week = "第一周"
-    @sport.wday = "星期日"
+    if current_user
+      @sport=Sport.new
+      @sport.status = "未开始"
+      @sport.winner = "0"
+      @sport.loser = "0"
+      @sport.week = "第一周"
+      @sport.wday = "星期日"
+    else
+      redirect_to :root
+    end
   end
 
   def forenotice
@@ -43,26 +47,41 @@ class SportsController < ApplicationController
   end
 
   def destroy
-    @sport = Sport.find(params[:id])
-    @sport.destroy
-
-    redirect_to @sport
+    if current_user
+      @sport = Sport.find(params[:id])
+      @sport.destroy
+      redirect_to @sport
+    else
+      redirect_to :root
+    end
   end
 
   def show
-    @sport= Sport.find(params[:id])
+    if current_user
+      @sport= Sport.find(params[:id])
+    else
+      redirect_to :root
+    end
   end
 
   def edit
-    @sport= Sport.find(params[:id])
+    if current_user
+      @sport= Sport.find(params[:id])
+    else
+      redirect_to :root
+    end
   end
 
   def update
-    @sport= Sport.find(params[:id])
-    if @sport.update(sport_params)
-      redirect_to @sport
+    if current_user
+      @sport= Sport.find(params[:id])
+      if @sport.update(sport_params)
+        redirect_to @sport
+      else
+        render 'edit'
+      end
     else
-      render 'edit'
+      redirect_to :root
     end
   end
 
