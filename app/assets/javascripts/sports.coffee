@@ -22,6 +22,8 @@ $(document).on "turbolinks:load", ->
     $('#search_form').submit();
   $('#interest').on "click", ->
     location.href="/interest"
+  if document.body.clientWidth < 650
+    $(".computer-only").hide()
 
   $("#all").on "click", ->
     $('#search_form').submit();

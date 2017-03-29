@@ -1,9 +1,10 @@
+<div class="ui mobile only container">
 <%= form_tag({controller:"sports",action:"search"},id:"search_form") do %>
   <div class="ui search">
     <div class="ui input">
     <input type="text" name="key" placeholder="搜索队伍编号" value="">
     <!--以下是两种实现方法 -->
-    <select name="title" class="ui compact selection dropdown">
+    <select name="title" class="ui compact selection dropdown computer-only">
       <option value="">项目</option>
       <option value="足球">足球</option>
       <option value="篮球">篮球</option>
@@ -11,7 +12,7 @@
       <option value="乒乓球">乒乓球</option>
       <option value="台球">台球</option>
     </select>
-    <div class="ui compact selection dropdown">
+    <div class="ui compact selection dropdown computer-only">
       <input type="hidden" id="week_info" name="week_" value="">
       <div class="default text">第X周</div>
       <i class="dropdown icon"></i>
@@ -22,7 +23,7 @@
         <div class="item" data-value="第四周">第四周</div>
       </div>
     </div>
-    <select name="wday_" class="ui compact selection dropdown">
+    <select name="wday_" class="ui compact selection dropdown computer-only">
       <option value="">具体日期</option>
       <option value="星期一">星期一</option>
       <option value="星期二">星期二</option>
@@ -35,5 +36,5 @@
       <button type="submit" class="ui button">搜索</button>
     </div>
   </div>
-
 <% end %>
+</div>
