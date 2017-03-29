@@ -13,6 +13,7 @@
   <strong>队伍一分数:</strong>
   <%= @sport.wp %>
 </p>
+<% unless @sport.title.include? "趣味"%>
 <p>
   <strong>队伍二:</strong>
   <%= @sport.teamtwo %>
@@ -35,3 +36,4 @@
   <%= @sport.hour %>:<%= @sport.minute %>
   <% end %>
 </p>
+<% end %>

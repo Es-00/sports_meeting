@@ -1,0 +1,34 @@
+<%= form_for @sport do |f| %>
+<div class="ui center aligned segment">
+  <h4>项目:</h4>
+  <div class="ui compact menu">
+  <div class="ui pointing dropdown item">
+    <input id="var_title" type="hidden"  name="sport[title]" value="<%=@sport.title%>">
+    <span class="text">体育项目</span>
+    <i class="dropdown icon"></i>
+    <div class="menu">
+      <div class="ui dropdown item">
+        <i class="dropdown icon"></i>
+        <span class="text">趣味项目</span>
+        <div class="menu">
+          <div class="item" data-value="趣味项目:暴走大礼包">暴走大礼包</div>
+          <div class="item" data-value="趣味项目:三维弹球">三维弹球</div>
+          <div class="item" data-value="趣味项目:舞动青春">舞动青春</div>
+        </div>
+      </div>
+    </div>
+  </div>
+  </div>
+  <p>
+    <%= f.label :队伍一 %><br>
+    <%= f.text_field :teamone %>
+  </p>
+  <p>
+    <%= f.label :队伍一分数 %><br>
+    <%= f.text_field :wp %>
+  </p>
+  <p>
+    <%= f.submit %>
+  </p>
+</div>
+<% end %>

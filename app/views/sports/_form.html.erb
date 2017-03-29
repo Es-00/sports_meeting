@@ -40,18 +40,18 @@
 <div class="status">
   <p>
     <%= f.label :状态 %><br>
-    <%= radio_button(:sport,:status, "未开始") %>
+    <%= f.radio_button(:status, "未开始") %>
     <%= label_tag( "未开始") %>
-    <%= radio_button(:sport,:status, "已结束") %>
+    <%= f.radio_button(:status, "已结束") %>
     <%= label_tag( "已结束") %>
 </div>
   <p>
     <%= f.label :队伍一 %><br>
     <%= f.text_field :teamone %>
     <div class="interest_hidden">
-      <%= radio_button(:sport,:winner, "0") %>
+      <%= f.radio_button(:winner, "0") %>
       <%= label_tag( "未开始") %>
-      <%= radio_button(:sport,:winner, @sport.teamone) %>
+      <%= f.radio_button(:winner, "1") %>
       <label>赢</label>
     </div>
   </p>
@@ -64,9 +64,9 @@
     <%= f.label :队伍二 %><br>
     <%= f.text_field :teamtwo %>
     <p></p>
-    <%= radio_button(:sport,:loser, "0") %>
+    <%= f.radio_button(:loser, "0") %>
     <%= label_tag( "未开始") %>
-    <%= radio_button(:sport,:loser, @sport.teamtwo) %>
+    <%= f.radio_button(:loser, "1") %>
     <%= label_tag( "输") %>
   </p>
 

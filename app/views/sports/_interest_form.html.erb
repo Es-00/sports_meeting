@@ -9,7 +9,14 @@
     <% sports.each do |sport| %>
     <tr>
       <td><%= sport.teamone %></td>
-      <td><%= sport.wp %></td>
+      <td><%= sport.wp %>
+      <% if current_user%>
+        <%= link_to 'Edit',edit_sport_path(sport),:class=>"ui right floated mini blue button" %>
+        <%= link_to 'Delete', sport_path(sport),
+                method: :delete,
+                data: { confirm: '真的要删掉嘛？' }, :class=>"ui right floated mini red button" %>
+      <% end %>
+      </td>
     </tr>
     <% end %>
   </tbody>

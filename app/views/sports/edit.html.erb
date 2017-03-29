@@ -1,4 +1,7 @@
 <h1>Editing Information</h1>
-<%= render 'form' %>
-
+<% unless @sport.title.include? "趣味"%>
+  <%= render 'form' %>
+<% else %>
+  <%= render 'interest_edit' %>
+<% end %>
 <%= link_to 'Back', sports_path %>
