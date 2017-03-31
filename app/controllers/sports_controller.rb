@@ -7,7 +7,7 @@ class SportsController < ApplicationController
   def new
     if current_user
       @sport=Sport.new
-      @sport.status = "未开始"
+      @sport.status = "已结束"
       @sport.winner = "0"
       @sport.loser = "0"
       @sport.week = "第一周"
@@ -28,7 +28,17 @@ class SportsController < ApplicationController
     if params[:category]
       @sports=[]
       @sports+=Sport.where("title=?","趣味项目:"+params[:category])
-      @sports.sort_by! {|x| x.wp}
+      unless @sports.empty?
+        begin
+          unless @sports.last.wp.include? ":"
+            @sports.sort_by! {|x| x.wp.to_i*(-1)}
+          else
+            @sports.sort_by! {|x| x.wp}
+          end
+        rescue
+          #Do Nothing
+        end
+      end
       respond_to do |f|
         f.js
       end
