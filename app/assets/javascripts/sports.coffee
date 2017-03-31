@@ -25,6 +25,12 @@ $(document).on "turbolinks:load", ->
   if document.body.clientWidth < 650
     $(".computer-only").hide()
 
+  $("#sport_status").on "change", ->
+    if $("#sport_status").val() == "未开始"
+      $(".interest_hidden,.score").hide()
+    else if  $("#sport_status").val() == "已结束"
+      $(".interest_hidden,.score").show()
+
   $("#all").on "click", ->
     $('#search_form').submit();
   $(".interest.item").on "click", ->
