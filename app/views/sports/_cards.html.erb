@@ -5,13 +5,13 @@
 <div class="<%= 'ui '+dic[sport.title]+' segment'%>">
   <a class="<%= 'ui ribbon '+dic[sport.title]+' label' %>"><%= sport.title %></a>
   <span style="<%='color:'+dic2[sport.status]%>">项目<%= sport.status%></span>
-    <div class="ui grid">
-      <div class="ui four wide column">
+    <div class="ui stackable grid">
+      <div class="ui seven wide column">
         <div class="ui center aligned container">
           <h2><%= sport.teamone %></h2>
         </div>
       </div>
-      <div class="ui eight wide column">
+      <div class="ui two wide column">
         <div class="ui center aligned container">
           <% if sport.status=="未开始" %>
             <h2>VS</h2>
@@ -20,40 +20,37 @@
           <% end %>
         </div>
       </div>
-      <div class="ui four wide column">
+      <div class="ui seven wide column">
         <div class="ui center aligned container">
           <h2><%= sport.teamtwo %></h2>
         </div>
       </div>
     </div>
-  <div class="ui grid">
+  <div class="ui stackable grid">
     <div class="ui two wide column"></div>
-    <div class="ui three wide column">
+    <div class="ui five wide column">
       <div class="ui container">
-        <h3 class="ui header"><i class="wait icon"></i><%= sport.week %></h3>
+        <h3 class="ui header"><i class="wait icon"></i><%= sport.week %>&nbsp;&nbsp;<%= sport.wday %></h3>
       </div>
     </div>
+    <% unless sport.minute == ""%>
     <div class="ui two wide column">
       <div class="ui container">
-        <h3 class="ui header"><%= sport.wday %></h3>
+          <% if sport.minute=="0"%>
+            <h3 class="ui header"><%= sport.hour %>:<%= sport.minute %>0</h3>
+          <% else %>
+            <h3 class="ui header"><%= sport.hour %>:<%= sport.minute %></h3>
+          <% end %>
       </div>
     </div>
-    <div class="ui two wide column">
-      <div class="ui container">
-        <% if sport.minute=="0"%>
-          <h3 class="ui header"><%= sport.hour %>:<%= sport.minute %>0</h3>
-        <% else %>
-          <h3 class="ui header"><%= sport.hour %>:<%= sport.minute %></h3>
-        <% end %>
-      </div>
-    </div>
-    <div class="ui one wide column">
-        <h3>|</h3>
-    </div>
-    <div class="ui six wide column">
+    <% end %>
+    <% unless sport.place==""%>
+      <div class="ui six wide column">
         <h3 class="ui header"><i class="marker icon"></i><%= sport.place %></h3>
-    </div>
-    <div class="ui three wide column"></div>
+      </div>
+      <div class="ui three wide column"></div>
+    <% end %>
+
   </div>
   <% if current_user %>
     <%= link_to 'Edit',edit_sport_path(sport),:class=>"ui blue button" %>
