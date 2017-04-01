@@ -1,7 +1,20 @@
 class TeamsController < ApplicationController
 
   def index
-    @teams=Team.all
+    @teams=[]
+    @team=[]
+    @team+=Team.all
+    @groups=["A","B","C","D"]
+    @groups.each do |tp|
+      @temp=[]
+      @team.each do |t|
+        if t.group==tp
+          @temp<<t
+        end
+      end
+      @temp.sort_by!{|e| e.points}
+      @teams+=@temp
+    end
   end
 
   def new
@@ -22,7 +35,7 @@ class TeamsController < ApplicationController
 
   def show
     @team=Team.find(params[:id])
-    
+
   end
 
   def edit
