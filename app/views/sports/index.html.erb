@@ -1,7 +1,9 @@
- <div class="ui top fixed inverted menu">
+<div class="ui top fixed brown inverted menu">
   <div class="item">
     <i class="list layout icon"></i>
   </div>
+  <a class="item" id="all">全部比赛</a>
+  <a class="item" href="/forenotice">比赛预告</a>
   <div class="right menu">
   <% if current_user %>
     <a class="item">你好！</a>
@@ -10,7 +12,12 @@
           管理员操作
         <i class="dropdown icon"></i>
         <div class="menu">
-          <a class="item" href="/signup">SignUp</a>
+          <% if current_user %>
+            <a class="item" href="/sports/new">新建比赛</a>
+            <a class="item" href="/signup">注册新用户</a>
+            <a class="item" href="/logout" data-method="delete">登出</a>
+            <div class="divider"></div>
+          <% end %>
           <a class="item" href="/login">Login</a>
         </div>
     </div>
@@ -33,9 +40,6 @@
   <div class="column">
     <h2 class="ui icon header">
       <i class="soccer link icon" id="soccer" ></i>
-      <form id="zuqiu" action="/sports/search" method="post">
-        <input type="hidden" name="title" value="足球">
-      </form>
     <div class="content">足球<div class="sub header">反正足球挺好玩的～</div>
   </div>
     </h2>
@@ -43,49 +47,32 @@
   <div class="column">
     <h2 class="ui icon header">
       <i class="users link icon" id="basketball" ></i>
-      <form id="lanqiu" action="/sports/search" method="post">
-        <input type="hidden" name="title" value="篮球">
-      </form>
     <div class="content">篮球<div class="sub header">一掷千进，只入你心</div>
   </div>
     </h2></div>
   <div class="column">
     <h2 class="ui icon header">
     <i class="neuter link icon" id="badminton"></i>
-    <form id="yumaoqiu" action="/sports/search" method="post">
-      <input type="hidden" name="title" value="羽毛球">
-    </form>
     <div class="content">羽毛球<div class="sub header">无羽伦比，谁羽争锋</div></div>
     </h2>
   </div>
   <div class="column">
     <h2 class="ui icon header">
     <i class="forumbee link icon" id="pingpong"></i>
-    <form id="pingpang" action="/sports/search" method="post">
-      <input type="hidden" name="title" value="乒乓球">
-    </form>
     <div class="content">乒乓球<div class="sub header">乒你个春夏秋冬，乓我个无怨无悔</div></div>
     </h2>
   </div>
   <div class="column">
     <h2 class="ui icon header">
     <i class="circle link icon" id="billiard"></i>
-    <form id="taiqiu" action="/sports/search" method="post">
-      <input type="hidden" name="title" value="台球">
-    </form>
     <div class="content">台球<div class="sub header">旋转，碰撞，摩擦，不只是动量守恒</div></div>
     </h2>
   </div>
   <div class="column">
     <h2 class="ui icon header">
     <i class="game link icon" id="interest"></i>
-    <form id="quwei" action="/sports/search" method="post">
-      <input type="hidden" name="title" value="趣味项目">
-    </form>
     <div class="content" id="test">趣味项目<div class="sub header">我的意中人，会骑着七彩毛毛虫来接我</div></div>
     </h2>
   </div>
 </div>
-<%= link_to 'new',new_sport_path %>
 </div>
-<%= render "cards" %>

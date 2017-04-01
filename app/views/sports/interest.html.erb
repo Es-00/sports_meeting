@@ -1,0 +1,36 @@
+<br/>
+
+<div class="ui grid">
+  <div class="two wide column"></div>
+  <div class="twelve wide column">
+    <div class="ui black segment">
+      <a class="ui ribbon black label">趣味项目</a>
+      <h2 class="ui header">项目类别</h2>
+      <div class="ui three column celled grid">
+        <div class="center aligned baozou column">
+          <h3 class="ui icon header"><i class="gift link icon"></i>
+            <div class="content">暴走大礼包</div>
+          </h3>
+        </div>
+        <div class="center aligned sanwei column">
+          <h3 class="ui icon header"><i class="cubes link icon"></i>
+            <div class="content">三维弹球</div>
+          </h3>
+        </div>
+        <div class="center aligned qingchun column">
+          <h3 class="ui icon header"><i class="child link icon"></i>
+            <div class="content">舞动青春</div>
+          </h3>
+        </div>
+      </div>
+      <form id="interest_form" action="/sports/interesting" method="post" data-remote="true">
+        <input type="hidden" name="category" value="">
+      <form>
+    <div class="interest_results"></div>
+    </div>
+    <div class="ui center aligned container">
+      <%= link_to 'Back',sports_path,:class=>"ui blue button" %>
+    </div>
+  </div>
+  <div class="two wide column"></div>
+</div>

@@ -1,4 +1,5 @@
 <%= form_for @sport do |f| %>
+<div class="ui center aligned segment">
 <% if @sport.errors.any? %>
     <div id="error_explanation">
       <h2>
@@ -12,67 +13,67 @@
       </ul>
     </div>
   <% end %>
-
-  <div class="ui pointing dropdown link item">
-    <input type="hidden"  name="sport[title]" value="">
+  <h4>项目:</h4>
+  <div class="ui compact menu">
+  <div class="ui pointing dropdown item">
+    <input id="var_title" type="hidden"  name="sport[title]" value="<%=@sport.title%>">
     <span class="text">体育项目</span>
     <i class="dropdown icon"></i>
     <div class="menu">
-      <div class="item" data-value="足球">足球</div>
-      <div class="item" data-value="篮球">篮球</div>
-      <div class="item" data-value="羽毛球">羽毛球</div>
-      <div class="item" data-value="乒乓">乒乓</div>
-      <div class="item" data-value="台球">台球</div>
+      <div class="non-interest item" data-value="足球">足球</div>
+      <div class="non-interest item" data-value="篮球">篮球</div>
+      <div class="non-interest item" data-value="羽毛球">羽毛球</div>
+      <div class="non-interest item" data-value="乒乓球">乒乓球</div>
+      <div class="non-interest item" data-value="台球">台球</div>
       <div class="ui dropdown item">
         <i class="dropdown icon"></i>
         <span class="text">趣味项目</span>
         <div class="menu">
-          <div class="item" data-value="趣味项目:暴走大礼包">暴走大礼包</div>
-          <div class="item" data-value="趣味项目:三维台球">三维台球</div>
-          <div class="item" data-value="趣味项目:舞动青春">舞动青春</div>
+          <div class="interest item" data-value="趣味项目:暴走大礼包">暴走大礼包</div>
+          <div class="interest item" data-value="趣味项目:三维弹球">三维弹球</div>
+          <div class="interest item" data-value="趣味项目:舞动青春">舞动青春</div>
         </div>
       </div>
     </div>
   </div>
-
+  </div>
+<div class="status">
   <p>
     <%= f.label :状态 %><br>
-    <%= radio_button(:sport,:status, "未开始") %>
-    <%= label_tag( "未开始") %>
-    <%= radio_button(:sport,:status, "进行中") %>
-    <%= label_tag( "进行中") %>
-    <%= radio_button(:sport,:status, "已结束") %>
-    <%= label_tag( "已结束") %>
+    <%= f.select :status, [["未开始","未开始"],["已结束","已结束"]],{},{:class=>"ui compact dropdown"} %>
+  </p>
+</div>
   <p>
     <%= f.label :队伍一 %><br>
     <%= f.text_field :teamone %>
-    <%= radio_button(:sport,:winner, "0") %>
-    <%= label_tag( "未开始") %>
-    <%= radio_button(:sport,:winner, @sport.teamone) %>
-    <%= label_tag( "赢") %>
-    <%= radio_button(:sport,:winner, @sport.teamtwo) %>
-    <%= label_tag( "输") %>
+    <div class="interest_hidden">
+      <%= f.radio_button(:winner, "1") %>
+      <label>赢</label>
+      <%= f.radio_button(:winner, "2") %>
+      <label>输</label>
+    </div>
   </p>
   <p>
-    <%= f.label :队伍一分数 %><br>
-    <%= f.text_field :wp %>
+    <div class="score">
+      <%= f.label :队伍一分数 %><br>
+      <%= f.text_field :wp %>
+    </div>
   </p>
+<div class="teamtwo">
   <p>
     <%= f.label :队伍二 %><br>
     <%= f.text_field :teamtwo %>
-    <%= radio_button(:sport,:loser, "0") %>
-    <%= label_tag( "未开始") %>
-    <%= radio_button(:sport,:loser, @sport.teamone) %>
-    <%= label_tag( "赢") %>
-    <%= radio_button(:sport,:loser, @sport.teamtwo) %>
-    <%= label_tag( "输") %>
+    <p></p>
   </p>
-  <p>
+  <div class="score">
     <%= f.label :队伍二分数 %><br>
     <%= f.text_field :lp %>
-  </p>
+  </div>
+</div>
+<div class="others">
   <p>
-    <%= f.label :比赛第点 %>
+    <br/>
+    <%= f.label :比赛地点 %>
     <%= f.text_field :place %>
   </p>
   <p>
@@ -106,9 +107,9 @@
     <%= number_field(:sport,:hour, step: 1) %>:
     <%= number_field(:sport,:minute, step: 5) %>
   </p>
-
+</div>
   <p>
     <%= f.submit %>
   </p>
-
+</div>
 <% end %>
