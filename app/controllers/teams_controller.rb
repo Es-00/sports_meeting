@@ -12,7 +12,7 @@ class TeamsController < ApplicationController
           @temp<<t
         end
       end
-      @temp.sort_by!{|e| e.points}
+      @temp.sort_by!{|e| -(e.points.to_i)}
       @teams+=@temp
     end
   end

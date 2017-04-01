@@ -22,7 +22,16 @@
 </p>
 <p>
   <%= t.label :组别 %>
-  <%= t.text_field :group %>
+  <div class="interest_hidden">
+    <%= t.radio_button(:group, "A") %>
+    <label>A</label>
+    <%= t.radio_button(:group, "B") %>
+    <label>B</label>
+    <%= t.radio_button(:group, "C") %>
+    <label>C</label>
+    <%= t.radio_button(:group, "D") %>
+    <label>D</label>
+  </div>
 </p>
 <p>
   <%= t.submit %>
