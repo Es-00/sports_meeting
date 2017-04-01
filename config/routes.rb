@@ -4,8 +4,9 @@ Rails.application.routes.draw do
   resources :sports do
     collection{post :search}
   end
-  root 'sports#index'
+  resources :teams
 
+  root 'sports#index'
 
   get "signup" => "users#signup", :as => "signup"
   get "login" => "users#login", :as => "login"
