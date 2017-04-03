@@ -98,7 +98,7 @@ class SportsController < ApplicationController
 
 
   def search
-    dic={"第一周"=>1,"第二周"=>2,"第三周"=>3,"第四周"=>4}
+    dic={"校历第五周"=>1,"校历第六周"=>2,"校历第七周"=>3,"校历第八周"=>4}
     dic2={"星期一"=>1,"星期二"=>2,"星期三"=>3,"星期四"=>4,"星期五"=>5,"星期六"=>6,"星期日"=>7}
     @sports=[]
     if params[:key]
