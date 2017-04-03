@@ -1,0 +1,19 @@
+<%= form_for @category do |category_form| %>
+  <label><%= @category.name %></label>
+  <p></p>
+  <% @category.teams.each do |team| %>
+    <%= category_form.fields_for team, index: team.id do |team_form|%>
+      <label><%= team.name %></label>
+      <%= team_form.text_field :points %>
+    <% end %>
+  <% end %>
+  <%= category_form.submit "提交榜单修改",:class=>"ui red button"%>
+<% end %>
+
+<form action="/sports/search" method="post">
+  <input name="search[title]" type="hidden" >
+  <input name="search[week_]" type="hidden" >
+  <input name="search[wday_]" type="hidden" >
+  <input name="search[key]" type="hidden">
+  <button class="ui centered grey button" type="submit" >返回搜索结果</button>
+</form>

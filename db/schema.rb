@@ -10,7 +10,13 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170401033331) do
+ActiveRecord::Schema.define(version: 20170403063500) do
+
+  create_table "categories", force: :cascade do |t|
+    t.string   "name"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
 
   create_table "sports", force: :cascade do |t|
     t.string   "title"
@@ -18,8 +24,8 @@ ActiveRecord::Schema.define(version: 20170401033331) do
     t.string   "loser"
     t.string   "wp"
     t.string   "lp"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+    t.datetime "created_at",  null: false
+    t.datetime "updated_at",  null: false
     t.string   "teamone"
     t.string   "teamtwo"
     t.string   "status"
@@ -28,14 +34,25 @@ ActiveRecord::Schema.define(version: 20170401033331) do
     t.string   "week"
     t.string   "wday"
     t.string   "place"
+    t.integer  "category_id"
+    t.index ["category_id"], name: "index_sports_on_category_id"
+  end
+
+  create_table "sports_teams", id: false, force: :cascade do |t|
+    t.integer "sport_id"
+    t.integer "team_id"
+    t.index ["sport_id"], name: "index_sports_teams_on_sport_id"
+    t.index ["team_id"], name: "index_sports_teams_on_team_id"
   end
 
   create_table "teams", force: :cascade do |t|
     t.string   "name"
     t.string   "points"
     t.string   "group"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+    t.datetime "created_at",  null: false
+    t.datetime "updated_at",  null: false
+    t.integer  "category_id"
+    t.index ["category_id"], name: "index_teams_on_category_id"
   end
 
   create_table "users", force: :cascade do |t|

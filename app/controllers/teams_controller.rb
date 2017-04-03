@@ -17,19 +17,19 @@ class TeamsController < ApplicationController
     end
   end
 
-  def new
-    @team=Team.new
+  def board
+    #test
+    if params[:category]
+      @category=Category.find_by_name(params[:category])
+    end
   end
 
-  def create
-    @team=Team.new(params.require(:team).permit(:name,:points,:group))
-
-    @team.save
-
-    if @team.save
-      redirect_to @team
-    else
-      render 'new'
+  def update_board
+    if params[:category]
+      for team_id in params[:category][:team].keys
+        Team.find_by_id(team_id).update(points:params[:category][:team][team_id][:points].to_i)
+      end
+      redirect_to :root
     end
   end
 
@@ -61,5 +61,6 @@ class TeamsController < ApplicationController
   private
   def team_params
     params.require(:team).permit(:name,:points,:group)
+    params.require(:category).permit(:name,:teams)
   end
 end

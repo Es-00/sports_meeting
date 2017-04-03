@@ -15,5 +15,8 @@ Rails.application.routes.draw do
 
   get "interest" => "sports#interest"
   get "forenotice" => "sports#forenotice"
+  post "board" => "teams#board"
+  post "update_board" => "teams#update_board", :as =>"category"
+  patch "update_board" => "teams#update_board"
 
 end
