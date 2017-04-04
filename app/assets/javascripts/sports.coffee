@@ -6,19 +6,19 @@ $(document).on "turbolinks:load", ->
   $('.ui.dropdown')
     .dropdown()
   $('#soccer').on "click", ->
-    $("select[name='title']").val("足球");
+    $("select[name='search[title]']").val("足球");
     $('#search_form').submit();
   $('#basketball').on "click", ->
-    $("select[name='title']").val("篮球");
+    $("select[name='search[title]']").val("篮球");
     $('#search_form').submit();
   $('#badminton').on "click", ->
-    $("select[name='title']").val("羽毛球");
+    $("select[name='search[title]']").val("羽毛球");
     $('#search_form').submit();
   $('#pingpong').on "click", ->
-    $("select[name='title']").val("乒乓球");
+    $("select[name='search[title]']").val("乒乓球");
     $('#search_form').submit();
   $('#billiard').on "click", ->
-    $("select[name='title']").val("台球");
+    $("select[name='search[title]']").val("台球");
     $('#search_form').submit();
   $('#interest').on "click", ->
     location.href="/interest"

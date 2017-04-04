@@ -51,6 +51,8 @@
       <label>赢</label>
       <%= f.radio_button(:winner, "2") %>
       <label>输</label>
+      <%= f.radio_button(:winner, "3") %>
+      <label>平</label>
     </div>
   </p>
   <p>
@@ -79,13 +81,17 @@
   <p>
     <%= f.label :比赛时间 %>
     <%= radio_button(:sport, :week, "校历第五周") %>
-    <%= label_tag( "第五周") %>
+    <%= label_tag("第五周") %>
     <%= radio_button(:sport, :week, "校历第六周") %>
-    <%= label_tag( "第六周") %>
+    <%= label_tag("第六周") %>
     <%= radio_button(:sport, :week, "校历第七周") %>
-    <%= label_tag( "第七周") %>
+    <%= label_tag("第七周") %>
     <%= radio_button(:sport, :week, "校历第八周") %>
     <%= label_tag("第八周") %>
+    <%= radio_button(:sport, :week, "校历第九周") %>
+    <%= label_tag("第九周") %>
+    <%= radio_button(:sport, :week, "校历第十周") %>
+    <%= label_tag("第十周") %>
   </p>
   <p>
     <%= radio_button(:sport, :wday, "星期日") %>

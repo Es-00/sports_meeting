@@ -13,7 +13,11 @@
       <% @sort_teams.each do |team| %>
         <%= category_form.fields_for team, index: team.id do |team_form|%>
           <tr>
-            <td><label><%= team.name %></label></td>
+            <td><label><%= team.name %></label>
+              <%= link_to 'Delete', team_path(team),
+                      method: :delete,
+                      data: { confirm: '删掉队伍将导致数据与该队伍解除关联，确定么？' }, :class=>"ui mini red basic button" %>
+            </td>
             <% if current_user %>
               <td><%= team_form.text_field :group %></td>
               <td><%= team_form.text_field :points %></td>
@@ -27,7 +31,7 @@
     </tbody>
   </table>
   <% if current_user %>
-    <div class="ui red bottom attached button" id="board_submit">提交榜单修改</div>
+    <div class="ui green bottom attached button" id="board_submit">提交榜单修改</div>
   <% end %>
 <% end %>
   <form action="/sports/search" method="post">

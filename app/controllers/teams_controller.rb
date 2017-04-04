@@ -26,7 +26,7 @@ class TeamsController < ApplicationController
   end
 
   def update_board
-    unless current_user
+    if current_user
       if params[:category]
         for team_id in params[:category][:team].keys
           the_team=params[:category][:team][team_id]
@@ -55,11 +55,17 @@ class TeamsController < ApplicationController
   #   end
   # end
   #
-  # def destroy
-  #   @team=Team.find(params[:id])
-  #   @team.destroy
-  #   redirect_to @team
-  # end
+  def destroy
+     @team=Team.find(params[:id])
+     #解除所有关联
+     @team.sports.each do |s|
+       s.teams.delete(@team)
+     end
+     @team.category.teams.delete(@team)
+     #Now Suicide
+     @team.destroy
+     redirect_to :root
+  end
 
   private
   def team_params
