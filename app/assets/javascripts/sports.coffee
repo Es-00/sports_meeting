@@ -49,7 +49,7 @@ $(document).on "turbolinks:load", ->
     $('#interest_form').submit();
 
   $('#board_submit').on "click", ->
-    $("#edit_category_4").submit();
+    $(".edit_category").submit();
   $(".list.layout.link.icon").on "click", ->
     $('.ui.labeled.icon.sidebar')
       .sidebar('toggle')

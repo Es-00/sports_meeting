@@ -26,7 +26,7 @@ class TeamsController < ApplicationController
   end
 
   def update_board
-    unless current_user
+    if current_user
       if params[:category]
         for team_id in params[:category][:team].keys
           the_team=params[:category][:team][team_id]
