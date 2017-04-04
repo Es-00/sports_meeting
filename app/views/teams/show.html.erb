@@ -1,0 +1,13 @@
+<h1>The Teams</h1>
+<p>队伍名称:
+  <%= @team.name %>
+</p>
+<p>积分:
+  <%= @team.points %>
+</p>
+<p>组别:
+  <%= @team.group %>
+</p>
+
+<%= link_to "编辑",edit_team_path %>
+<%= link_to "返回",teams_path %>

@@ -4,9 +4,9 @@ Rails.application.routes.draw do
   resources :sports do
     collection{post :search,:interesting}
   end
+  resources :teams
   root 'sports#index'
 
-  #User System
   get "signup" => "users#signup", :as => "signup"
   get "login" => "users#login", :as => "login"
   resources :users, only: [:create]
@@ -15,5 +15,9 @@ Rails.application.routes.draw do
 
   get "interest" => "sports#interest"
   get "forenotice" => "sports#forenotice"
+  post "board" => "teams#board"
+  post "update_board" => "teams#update_board", :as =>"category"
+  patch "update_board" => "teams#update_board"
+  get "check" => "sports#check"
 
 end
