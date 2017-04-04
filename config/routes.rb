@@ -18,5 +18,6 @@ Rails.application.routes.draw do
   post "board" => "teams#board"
   post "update_board" => "teams#update_board", :as =>"category"
   patch "update_board" => "teams#update_board"
+  get "check" => "sports#check"
 
 end

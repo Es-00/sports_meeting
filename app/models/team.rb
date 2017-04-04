@@ -3,4 +3,5 @@ class Team < ApplicationRecord
   belongs_to :category
 
   validates :name,presence:true
+  validates :points,numericality: { only_integer: true }
 end

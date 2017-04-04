@@ -4,6 +4,12 @@ class SportsController < ApplicationController
     @sports=Sport.all
   end
 
+  def check
+    if current_user
+      Sport.check()
+    end
+  end
+
   def new
     if current_user
       @sport=Sport.new
@@ -46,19 +52,23 @@ class SportsController < ApplicationController
   end
 
   def create
-    @sport = Sport.new(params.require(:sport).permit(:title,:teamone,:winner,:loser,:teamtwo,:wp,:lp,:week,:wday,:status,:hour,:minute,:place))
-    @category=Category.find_by_name(@sport.title)||Category.create(name:@sport.title)
-    @sport.category=@category
-    for team in [@sport.teamone,@sport.teamtwo]
-      @team=Team.where(name:team,category:@category).last||@category.teams.create({name:team})
-      @sport.teams<<@team
-    end
-    @sport.save
+    if current_user
+      @sport = Sport.new(params.require(:sport).permit(:title,:teamone,:winner,:loser,:teamtwo,:wp,:lp,:week,:wday,:status,:hour,:minute,:place))
+      @category=Category.find_by_name(@sport.title)||Category.create(name:@sport.title)
+      @sport.category=@category
+      teams=[]
+      teams<<@sport.teamone<<@sport.teamtwo
+      for team in teams.compact
+        @team=Team.where(name:team,category:@category).last||@category.teams.create({name:team,points:0,group:""})
+        @sport.teams<<@team
+      end
+      @sport.save
 
-    if @sport.save
-      redirect_to @sport
-    else
-      render 'new'
+      if @sport.save
+        redirect_to @sport
+      else
+        render 'new'
+      end
     end
   end
 
@@ -109,8 +119,8 @@ class SportsController < ApplicationController
     @sports=[]
     if params[:search][:key]
       Sport.all.each do |sport|
-        if sport.teamone.include? params[:search][:key] or sport.teamtwo.include? params[:search][:key]
-          if sport.wday.include? params[:search][:wday_] and sport.week.include? params[:search][:week_] and sport.title.include? params[:search][:title]
+        if sport.teamone.include? params[:search][:key] or (sport.teamtwo||="").include? params[:search][:key]
+          if (sport.wday||="").include? params[:search][:wday_] and (sport.week||="").include? params[:search][:week_] and sport.title.include? params[:search][:title]
             unless sport.title.include? "趣味" or sport.status=="未开始"
               @sports << sport
             end
