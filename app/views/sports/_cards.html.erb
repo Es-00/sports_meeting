@@ -50,8 +50,16 @@
       </div>
       <div class="ui three wide column"></div>
     <% end %>
-
   </div>
+  <% if ["乒乓球"].include? sport.title %>
+    <div class="ui center aligned container">
+      <form action="/board" method="post">
+        <input type="hidden" name="category" value="<%= sport.title %>" />
+        <input type="hidden" name="search" value="<%= params[:search] %>" />
+        <button class="ui labeled icon button" type="submit"><i class="trophy icon"></i>积分榜</button>
+      </form>
+    </div>
+  <% end %>
   <% if current_user %>
     <%= link_to 'Edit',edit_sport_path(sport),:class=>"ui blue button" %>
     <%= link_to 'Delete', sport_path(sport),

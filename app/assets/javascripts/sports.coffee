@@ -34,9 +34,8 @@ $(document).on "turbolinks:load", ->
   $("#all").on "click", ->
     $('#search_form').submit();
   $(".interest.item").on "click", ->
-    $(".interest_hidden,.teamtwo,.others,.status").hide();
-  $(".non-interest.item").on "click", ->
-    $(".interest_hidden,.teamtwo,.others,.status").show();
+    $(".interest_hidden,.teamtwo,.others").remove();
+    $(".status").hide()
 
 
   $('.qingchun').on "click", ->
@@ -48,3 +47,9 @@ $(document).on "turbolinks:load", ->
   $('.sanwei').on "click", ->
     $("input[name='category']").val("三维弹球");
     $('#interest_form').submit();
+
+  $('#board_submit').on "click", ->
+    $("#edit_category_4").submit();
+  $(".list.layout.link.icon").on "click", ->
+    $('.ui.labeled.icon.sidebar')
+      .sidebar('toggle')

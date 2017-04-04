@@ -1,0 +1,22 @@
+<h1>Teams</h1>
+<table>
+<tr>
+  <th>队伍</th>
+  <th>分数</th>
+  <th>组别</th>
+</tr>
+<%= @teams.each do |t| %>
+<tr>
+  <td><%= t.name %></td>
+  <td><%= t.points %></td>
+  <td><%= t.group %></td>
+  <td><%= link_to "详细",team_path(t) %></td>
+  <td><%= link_to "编辑",edit_team_path(t) %></td>
+  <td><%= link_to "删除",team_path(t),
+        method: :delete,
+        data:{confirm: "确定删除？"}
+  %></td>
+</tr>
+<% end %>
+</table>
+<%= link_to "新建",new_team_path %>

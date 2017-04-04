@@ -1,0 +1,38 @@
+<%= form_for @team do |t| %>
+<% if @team.errors.any? %>
+    <div id="error_explanation">
+      <h2>
+        <%= pluralize(@team.errors.count, "error") %> prohibited
+        this article from being saved:
+      </h2>
+      <ul>
+        <% @team.errors.full_messages.each do |msg| %>
+          <li><%= msg %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+<p>
+  <%= t.label :队伍名字 %>
+  <%= t.text_field :name %>
+</p>
+<p>
+  <%= t.label :积分 %>
+  <%= t.text_field :points %>
+</p>
+<p>
+  <%= t.label :组别 %>
+  <div class="interest_hidden">
+    <%= t.radio_button(:group, "A") %>
+    <label>A</label>
+    <%= t.radio_button(:group, "B") %>
+    <label>B</label>
+    <%= t.radio_button(:group, "C") %>
+    <label>C</label>
+    <%= t.radio_button(:group, "D") %>
+    <label>D</label>
+  </div>
+</p>
+<p>
+  <%= t.submit %>
+<% end %>
