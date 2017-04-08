@@ -1,46 +1,30 @@
 <br/>
 <div class="ui raised center aligned container segment">
-<%= form_for @category do |category_form| %>
   <h3 class="ui horizontal divider header"><i class="tag icon"></i><%= @category.name %></h3>
-  <p></p>
-  <table class="ui celled table">
-    <thead>
-      <tr><th>队伍</th>
-        <th>小组</th>
-        <th>积分</th></tr>
-    </thead>
-    <tbody>
-      <% @sort_teams.each do |team| %>
-        <%= category_form.fields_for team, index: team.id do |team_form|%>
-          <tr>
-            <td><label><%= team.name %></label>
-              <% if current_user %>
-		<%= link_to 'Delete', team_path(team),
-                      method: :delete,
-                      data: { confirm: '删掉队伍将导致数据与该队伍解除关联，确定么？' }, :class=>"ui mini red basic button" %>
-            	<% end %>
-		</td>
-            <% if current_user %>
-              <td><%= team_form.text_field :group %></td>
-              <td><%= team_form.text_field :points %></td>
-            <% else %>
-            <td><%= team.group %></td>
-            <td><%= team.points %></td>
-            <% end %>
-          </tr>
-        <% end %>
-      <% end %>
-    </tbody>
-  </table>
-  <% if current_user %>
-    <div class="ui green bottom attached button" id="board_submit">提交榜单修改</div>
+  <div class="ui secondary pointing top attached menu">
+    <a class="active item" id="groups">小组赛</a>
+    <a class="item" id="advance">晋级赛</a>
+    <a class="item" id="final">决赛类</a>
+    <form action="/board" method="post" data-remote="true" id="compete_form">
+      <input type="hidden" name="compete" value="">
+      <input type="hidden" name="category" value="<%= @category.name %>">
+    </form>
+  </div>
+  <div class="board_part">
+    <% if not @category.name=="羽毛球"%>
+      <%= render partial:'teams/board_form',locals:{category: @category,sort_teams:@sort_teams}%>
+    <%else%>
+      <%= render partial:'teams/badminton',locals:{form_name:"小组赛表单",action:"groups"}%>
+    <% end %>
+  </div>
+
+  <% if params[:search] %>
+    <form action="/sports/search" method="post">
+      <input name="search[title]" type="hidden" >
+      <input name="search[week_]" type="hidden" >
+      <input name="search[wday_]" type="hidden" >
+      <input name="search[key]" type="hidden">
+      <button class="ui centered grey button" type="submit" >返回搜索结果</button>
+    </form>
   <% end %>
-<% end %>
-  <form action="/sports/search" method="post">
-    <input name="search[title]" type="hidden" >
-    <input name="search[week_]" type="hidden" >
-    <input name="search[wday_]" type="hidden" >
-    <input name="search[key]" type="hidden">
-    <button class="ui centered grey button" type="submit" >返回搜索结果</button>
-  </form>
 </div>

@@ -15,12 +15,43 @@ class TeamsController < ApplicationController
   #     @teams+=@temp
   #   end
   # end
+  def import_form
+    Team.import(params[:form],params[:form_name])
+    redirect_to :root,notice: "表格信息成功导入！"
+  end
+
   def board
     #test
     if params[:category]
       @category=Category.find_by_name(params[:category])
       @sort_teams=@category.teams.sort do |a,b|
         [a.group, (-1)*a.points.to_i] <=> [b.group, (-1)*b.points.to_i]
+      end
+    end
+    if params[:compete]
+      dic={"advance"=>"强","final"=>"决","groups"=>""}
+      dic2={"advance"=>"晋级赛表单","groups"=>"小组赛表单","final"=>"决赛表单"}
+      @category=Category.find_by_name(params[:category])
+      if @category.name!="羽毛球"
+        @teams=[]
+        @category.teams.each do |t|
+          if t.name.include? dic[params[:compete]]
+            @teams<<t
+          end
+        end
+        @type="normal"
+        @sort_teams=@teams.sort do |a,b|
+          [a.group, (-1)*a.points.to_i] <=> [b.group, (-1)*b.points.to_i]
+        end
+      end
+      if @category.name=="羽毛球"
+        @form=Form.where("name=?", dic2[params[:compete]]).last
+        @type="badminton"
+        @form_name=dic2[params[:compete]]
+        @action=params[:compete]
+      end
+      respond_to do |f|
+        f.js
       end
     end
   end

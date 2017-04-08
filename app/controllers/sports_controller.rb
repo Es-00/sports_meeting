@@ -133,7 +133,7 @@ class SportsController < ApplicationController
       Sport.all.each do |sport|
         if sport.teamone.include? params[:search][:key] or (sport.teamtwo||="").include? params[:search][:key]
           if (sport.wday||="").include? params[:search][:wday_] and (sport.week||="").include? params[:search][:week_] and sport.title.include? params[:search][:title]
-            unless sport.title.include? "趣味" or sport.status=="未开始"
+            unless sport.title.include? "趣味"# or sport.status=="未开始"
               @sports << sport
             end
           end

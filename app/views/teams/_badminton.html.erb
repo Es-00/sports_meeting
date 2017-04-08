@@ -1,0 +1,38 @@
+<%# 羽毛球专用表单 %>
+<% if current_user%>
+  <h2 class="ui header">上传/更新表单 (列数最多为5)</h2>
+  <%= form_tag import_form_path, multipart: true do %>
+    <%= file_field_tag :form %>
+    <% dic3={"advance"=>"晋级赛表单","groups"=>"小组赛表单","final"=>"决赛表单"} %>
+    <input type="hidden" name="form_name" value="<%= dic3[action] %>">
+    <%= submit_tag "Import" %>
+  <% end %>
+<% end %>
+
+
+<% @form=Form.find_by_name(form_name) %>
+<% if @form %>
+  <table class="ui celled table">
+    <thead>
+      <tr>
+      <% for i in (1..@form.size)%>
+        <th><%= eval("@form.col"+i.to_s+".split('End')"+"[0]") %></th>
+      <% end %>
+        <!-- <th>晋级结果(1:晋级，0:未晋级/结果未公布)</th> -->
+      </tr>
+    </thead>
+    <tbody>
+      <% for j in (1..@form.col1.split("End").length-1) %>
+          <tr>
+            <% for i in (1..@form.size)%>
+              <% if ["男单","男双"].include? eval("@form.col"+i.to_s+".split('End')["+j.to_s+"]")%>
+                <td><strong><%= eval("@form.col"+i.to_s+".split('End')["+j.to_s+"]") %></strong></td>
+              <% else %>
+                <td><%= eval("@form.col"+i.to_s+".split('End')["+j.to_s+"]") %></td>
+              <% end %>
+            <% end %>
+          </tr>
+      <% end %>
+    </tbody>
+  </table>
+<% end %>
