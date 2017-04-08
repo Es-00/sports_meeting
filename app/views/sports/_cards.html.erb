@@ -56,7 +56,9 @@
       <form action="/board" method="post">
         <input type="hidden" name="category" value="<%= sport.title %>" />
         <input type="hidden" name="search" value="<%= params[:search] %>" />
-        <button class="ui labeled icon button" type="submit"><i class="trophy icon"></i>积分榜</button>
+        <% unless Time.now.to_s > "2017-04-09 12:00:00 +0800" and sport.title=="乒乓球" %>
+          <button class="ui labeled icon button" type="submit"><i class="trophy icon"></i>积分榜</button>
+        <% end %>
       </form>
     </div>
   <% end %>

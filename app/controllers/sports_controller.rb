@@ -123,24 +123,36 @@ class SportsController < ApplicationController
     end
   end
 
-
-
   def search
     dic={"校历第五周"=>1,"校历第六周"=>2,"校历第七周"=>3,"校历第八周"=>4,"校历第九周"=>5,"校历第十周"=>6}
     dic2={"星期一"=>1,"星期二"=>2,"星期三"=>3,"星期四"=>4,"星期五"=>5,"星期六"=>6,"星期日"=>7}
+    @nsports=[]
+    @advance=[]
+    @final=[]
     @sports=[]
     if params[:search][:key]
       Sport.all.each do |sport|
         if sport.teamone.include? params[:search][:key] or (sport.teamtwo||="").include? params[:search][:key]
           if (sport.wday||="").include? params[:search][:wday_] and (sport.week||="").include? params[:search][:week_] and sport.title.include? params[:search][:title]
             unless sport.title.include? "趣味"# or sport.status=="未开始"
-              @sports << sport
+              if sport.teamone.include? "强"
+                @advance<<sport
+              elsif sport.teamone.include? "决"
+                @final<<sport
+              else
+                @nsports<<sport
+              end
             end
           end
         end
       end
     end
-    @sports.sort_by!{|e| dic[e.week]*7+dic2[e.wday]}
+    @advance.sort_by!{|e| dic[e.week]*7+dic2[e.wday]}
+    @final.sort_by!{|e| dic[e.week]*7+dic2[e.wday]}
+    @nsports.sort_by!{|e| dic[e.week]*7+dic2[e.wday]}
+    @sports+=@final
+    @sports+=@advance
+    @sports+=@nsports
   end
 
 
