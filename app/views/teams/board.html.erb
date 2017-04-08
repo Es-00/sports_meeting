@@ -14,10 +14,12 @@
         <%= category_form.fields_for team, index: team.id do |team_form|%>
           <tr>
             <td><label><%= team.name %></label>
-              <%= link_to 'Delete', team_path(team),
+              <% if current_user %>
+		<%= link_to 'Delete', team_path(team),
                       method: :delete,
                       data: { confirm: '删掉队伍将导致数据与该队伍解除关联，确定么？' }, :class=>"ui mini red basic button" %>
-            </td>
+            	<% end %>
+		</td>
             <% if current_user %>
               <td><%= team_form.text_field :group %></td>
               <td><%= team_form.text_field :points %></td>
