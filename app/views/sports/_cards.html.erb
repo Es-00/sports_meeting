@@ -51,7 +51,7 @@
       <div class="ui three wide column"></div>
     <% end %>
   </div>
-  <% if ["乒乓球"].include? sport.title %>
+  <% if ["乒乓球","足球"].include? sport.title %>
     <div class="ui center aligned container">
       <form action="/board" method="post">
         <input type="hidden" name="category" value="<%= sport.title %>" />

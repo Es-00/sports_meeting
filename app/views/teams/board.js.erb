@@ -1,0 +1,8 @@
+
+<% if @type=="normal"%>
+  newhtml="<%= j render partial:'teams/board_form',locals:{category:@category,sort_teams:@sort_teams}%>";
+<% elsif @type=="badminton" %>
+  newhtml="<%= j render partial:'teams/badminton',locals:{form_name:@form_name,action:@action}%>";
+<% end %>
+$('.board_part').empty();
+$('.board_part').append(newhtml);

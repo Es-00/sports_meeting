@@ -11,9 +11,6 @@ $(document).on "turbolinks:load", ->
   $('#basketball').on "click", ->
     $("select[name='search[title]']").val("篮球");
     $('#search_form').submit();
-  $('#badminton').on "click", ->
-    $("select[name='search[title]']").val("羽毛球");
-    $('#search_form').submit();
   $('#pingpong').on "click", ->
     $("select[name='search[title]']").val("乒乓球");
     $('#search_form').submit();
@@ -22,6 +19,8 @@ $(document).on "turbolinks:load", ->
     $('#search_form').submit();
   $('#interest').on "click", ->
     location.href="/interest"
+  $('#badminton').on "click", ->
+    $("#badminton_form").submit()
   if document.body.clientWidth < 650
     $(".computer-only").hide()
 

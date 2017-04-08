@@ -126,14 +126,14 @@ class SportsController < ApplicationController
 
 
   def search
-    dic={"校历第五周"=>1,"校历第六周"=>2,"校历第七周"=>3,"校历第八周"=>4，"校历第九周"=>5，"校历第十周"=>6}
+    dic={"校历第五周"=>1,"校历第六周"=>2,"校历第七周"=>3,"校历第八周"=>4,"校历第九周"=>5,"校历第十周"=>6}
     dic2={"星期一"=>1,"星期二"=>2,"星期三"=>3,"星期四"=>4,"星期五"=>5,"星期六"=>6,"星期日"=>7}
     @sports=[]
     if params[:search][:key]
       Sport.all.each do |sport|
         if sport.teamone.include? params[:search][:key] or (sport.teamtwo||="").include? params[:search][:key]
           if (sport.wday||="").include? params[:search][:wday_] and (sport.week||="").include? params[:search][:week_] and sport.title.include? params[:search][:title]
-            unless sport.title.include? "趣味" or sport.status=="未开始"
+            unless sport.title.include? "趣味"# or sport.status=="未开始"
               @sports << sport
             end
           end
